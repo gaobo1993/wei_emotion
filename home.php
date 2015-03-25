@@ -21,7 +21,7 @@ $json = curl_exec($curl);
 curl_close($curl);
 $obj = json_decode($json);
 var_dump($obj);
-$token = $obj->access_token;
+global $token = $obj->access_token;
 $uid = $obj->uid;
 //get user information
 $url = "https://api.weibo.com/2/users/show.json?access_token=" . $token."&uid=" . $uid;
@@ -32,17 +32,27 @@ $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($curl);
 curl_close($curl);
-?>
-
-<table border="1px">
-<tr><th>property</th><th>value</th></tr>
-<?php
-$array = json_decode($json, true);
-foreach ($array as $x=>$x_value) {
-    echo "<tr><td>".$x."</td><td>".$x_value."</td></tr>";
+$array = json_decode($json, true);// information
+$con = mysql_connect("10.9.1.188:3306", "LW70AGqB1OOFgzAO", "HJmN4DfBEnQ0ajEH");
+if (!$con) {
+    die('Could not connect: ' . mysql_error());
 }
+if (mysql_num_rows(mysql_query("show tables like 'users'"))==0) {
+    mysql_query("create table users(
+                 id int not null primary key,
+                 screen_name varchar(20),
+                 )default charset=utf8;
+                ", $con);
+}
+mysql_query("insert into users (id, screen_name) values ('".$array['id'].
+            "','".$array['screen_name']."')");
+mysql_close($con);
+
+//save 100 posts
+//save keywords
+
+
 ?>
-</table>
 
 </body>
 </html>
