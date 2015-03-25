@@ -14,9 +14,13 @@ $code = $_GET['code'];
 echo $code;
 
 $url = "https://api.weibo.com/oauth2/access_token?client_id=3128512954&client_secret=f4b76f3f0ebf32b31e06748cb10b6327&grant_type=authorization_code&redirect_uri=weiconnect.coding.io/home.php&code=" . $code;
+echo "<br/>1<br/>";
 $curl = curl_init($url);
+echo "<br/>2<br/>";
 curl_setopt($curl, CURLOPT_POST, 1);
+echo "<br/>3<br/>";
 $json = curl_exec($curl);
+echo "<br/>4<br/>";
 curl_close($curl);
 echo "<hr/>";
 echo $json;
