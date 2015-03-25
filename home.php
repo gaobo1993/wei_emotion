@@ -18,7 +18,8 @@ $json = curl_exec($curl);
 curl_close($curl);
 echo "<hr/>";
 echo $json;
-echo "<hr/>";/*
+echo "<hr/>";
+/*
 $obj = json_decode($json);
 var_dump($obj);
 $token = $obj->access_token;
@@ -43,5 +44,6 @@ foreach ($array as $x=>$x_value) {
 ?>
 </table>
 */
+?>
 </body>
 </html>
