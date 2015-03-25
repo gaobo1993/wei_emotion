@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta property="wb:webmaster" content="3df8a9a1aa580df4" />
