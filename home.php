@@ -15,7 +15,6 @@ $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_POST, 1);
 $json = curl_exec($curl);
 curl_close($curl);
-$json = '{"access_token":"2.00nZ5MtC3Ivi6Df6c28dd7camycJSE","remind_in":"157679999","expires_in":157679999,"uid":"2647918555"}';
 $obj = json_decode($json);
 $token = $obj->access_token;
 $uid = $obj->uid;
@@ -36,5 +35,6 @@ foreach ($array as $x=>$x_value) {
 }
 ?>
 </table>
+
 </body>
 </html>
