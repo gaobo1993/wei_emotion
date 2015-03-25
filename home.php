@@ -7,5 +7,16 @@
 </head>
 <body>
 It works!
+<br/>
+<?php
+$code = $_GET['code'];
+$url = "https://api.weibo.com/oauth2/access_token?client_id=3128512954&client_secret=f4b76f3f0ebf32b31e06748cb10b6327&grant_type=authorization_code&redirect_uri=weiconnect.coding.net/home.php&code=" . $code;
+$curl = curl_init($url);
+$data = curl_exec($curl);
+curl_close($curl);
+var_dump($data);
+
+
+?>
 </body>
 </html>
