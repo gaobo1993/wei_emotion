@@ -20,6 +20,8 @@ $token = $obj->access_token;
 $uid = $obj->uid;
 //get user information
 $url = "https://api.weibo.com/2/users/show.json?access_token=" . $token."&uid=" . $uid;
+echo $url;
+echo "<br/><hr/>";
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_POST, 1);
 $json = curl_exec($curl);
