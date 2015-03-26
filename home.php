@@ -67,7 +67,18 @@ if ($stmt = $mysqli->prepare($query)) {
 } else {
 echo "fail to insert into table".$mysqli->errno.":".$mysqli->error;
 }
-echo "hahaa";
+
+echo "<hr/><hr/>";
+//get user posts
+$url = "https://api.weibo.com/2/statuses/public_timeline.json?access_token=".$token.
+       "count=100";
+$curl = curl_init($url);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+$json = curl_exec($curl);
+$curl_close($curl);
+var_dump($json);
+
+
 $mysqli->close();
 
 /*
