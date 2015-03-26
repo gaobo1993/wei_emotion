@@ -8,6 +8,7 @@ if (mysqli_connect_error()) {
 }
 //show posts
 $query = "select num from users where id = ".$uid;
+echo $query;/*
 $num = 0;
 if ($result = $mysqli->query($query)) {
     $row = $result->fetch_array(MYSQLI_NUM);
