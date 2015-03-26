@@ -28,7 +28,7 @@ $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($curl);
 curl_close($curl);
-$array = json_decode($json, true);
+$user_array = json_decode($json, true);
 // connect mysql database
 $mysqli = new mysqli("10.9.1.188", "LW70AGqB1OOFgzAO", "HJmN4DfBEnQ0ajEH", "cf_e61290b4_5735_47e5_891e_d13c3a00d3e3");
 if (mysqli_connect_error()) {
@@ -48,8 +48,8 @@ if ($result = $mysqli->query($query)) {
     }
 } else {echo "query table error".$mysqli->error;}
 //insert user info
-$screen_name = $array['screen_name'];
-$id = $array['id'];
+$screen_name = $user_array['screen_name'];
+$id = $user_array['id'];
 $query = "insert into users(id, screen_name) values (?,?)";
 if ($stmt = $mysqli->prepare($query)) {
     $stmt->bind_param("is", $id, $screen_name);
@@ -76,6 +76,7 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
     if ($re = $p->retweeted_status) {
         $content .= $re->text;
     }
+    $posts[$i] = $content;
     $query .= (" post".$i."=");
     $query .= ("'".$content."',");
     $all .= $content;
@@ -83,7 +84,6 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
 $query .= ("num = ".count($obj->statuses));
 $query .= " where t.id =";
 $query .= $uid;
-echo "<hr/>".$query."<hr/>";
 if (!$mysqli->query($query)) {
     echo "update table error".$mysqli->errno.":".$mysqli->error;
 } else {
@@ -91,33 +91,24 @@ if (!$mysqli->query($query)) {
 }
 $keywords = getkeywords(str_replace('/', '', $all));
 
-echo "<hr/>".$keywords;
 
 
 $mysqli->close();
 
-/*
-if (!$con) {
-    die('Could not connect: ' . mysql_error());
-}
-mysql_select_db("cf_e61290b4_5735_47e5_891e_d13c3a00d3e3", $con);
-if (mysql_num_rows(mysql_query("show tables like 'users'"))==0) {
-    mysql_query("create table users(
-                 id int not null primary key,
-                 screen_name varchar(20),
-                 )default charset=utf8;
-                ", $con);
-}
-mysql_query("insert into users (id, screen_name) values ('".$array['id'].
-            "','".$array['screen_name']."')");
-            */
-//mysql_close($con);
-
-//save 100 posts
-//save keywords
-
-
 ?>
-
+<?php
+echo $screen_name;
+echo "<hr/>";
+echo "<br/>关键词：";
+echo $keywords;
+?>
+<hr/>
+<ul>
+<?php
+for ($i=0; $i<count($posts); $i++) {
+    echo "<li>".$posts[$i]."</li>";
+}
+?>
+</ul>
 </body>
 </html>
