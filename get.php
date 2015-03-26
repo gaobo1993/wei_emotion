@@ -10,6 +10,9 @@ if (mysqli_connect_error()) {
 $query = "select num from users where id = ".$uid;
 echo $query;
 $num = 0;
+$result = $mysqli->query($query);
+var_dump($result);
+/*
 if ($result = $mysqli->query($query)) {
     var_dump($result);
 } else {echo "select errro".$mysqli->errno.".".$mysqli->error;
