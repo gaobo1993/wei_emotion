@@ -74,7 +74,7 @@ $url = "https://api.weibo.com/2/statuses/public_timeline.json?access_token=".$to
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($curl);
-$curl_close($curl);
+curl_close($curl);
 $obj = json_decode($json);
 var_dump($obj);
 
