@@ -77,25 +77,15 @@ curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($curl);
 curl_close($curl);
 $obj = json_decode($json);
-$all = "";
-$keywords = "";
 for ($i=0; $i<count($obj->statuses);$i ++) {
     $p = $obj->statuses[$i];
     $content = $p->text;
     if ($re = $p->retweeted_status) {
         $content .= $re->text;
     }
-    $all .= trim($content, '\\');
-    if ($i %10 ==9) {
-        echo "////////////////:".$all."<br/>";
-        $keywords.= getkeywords($all);
-        $all = "";
-    }
-    echo $content.'<hr/>';
+    $keywords = getkeywords($content);
+    echo $content.'<br/>'.$keywords.'<hr/>';
 }
-$keywords.= getkeywords($all);
-$all = "";
-echo $keywords;
 
 
 
