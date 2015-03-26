@@ -11,6 +11,11 @@ Hello, world!
 <a href="http://www.baidu.com">百度</a>
 <a href="https://api.weibo.com/oauth2/authorize?client_id=3128512954&response_type=code&redirect_uri=weiconnect.coding.io/home.php">
 微博登录</a>
-<wb:login-button type="3,2">登录按钮</wb:login-button>
+<wb:login-button type="3,2" onlogin="login">登录按钮</wb:login-button>
+<script>
+function login(o) {
+    window.location.href = "https://api.weibo.com/oauth2/authorize?client_id=3128512954&response_type=code&redirect_uri=weiconnect.coding.io/home.php";
+}
+</script>
 </body>
 </html>
