@@ -22,7 +22,7 @@ for ($i=0; $i<$num-1; $i ++) {
     $query .= ("post".$i.",");
 }
 $query .= (" post"+($num-1));
-$query .= " where id=".$uid;
+$query .= " from users where id=".$uid;
 echo $query;
 $result = $mysqli->query($query);
 if ($result->num_rows>0) {
