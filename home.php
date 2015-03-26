@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:wb="http://open.weibo.com/wb">
 <head>
     <meta property="wb:webmaster" content="3df8a9a1aa580df4" />
     <meta charset="UTF-8">
     <title>WeiConnet</title>
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=3128512954" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 
@@ -85,8 +86,6 @@ $query .= " where t.id =";
 $query .= $uid;
 if (!$mysqli->query($query)) {
     echo "update table error".$mysqli->errno.":".$mysqli->error;
-} else {
-    echo "success update table!";
 }
 $keywords = getkeywords(str_replace('/', '', $all));
 
@@ -95,7 +94,8 @@ $keywords = getkeywords(str_replace('/', '', $all));
 $mysqli->close();
 
 ?>
-
+<wb:login-button type="3,2" onlogout="logout">登录按钮</wb:login-button>
+<br/>
 Welcome!<br/>
 <?php
 echo '<img src="'.$user_array['profile_image_url'].'"alt="'.$screen_name.'">';
@@ -111,5 +111,10 @@ for ($i=0; $i<count($posts); $i++) {
 }
 ?>
 </ul>
+<script>
+function logout() {
+    window.location.href="http://weiconnect.coding.io";
+}
+</script>
 </body>
 </html>
