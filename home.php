@@ -90,6 +90,7 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
 
 //get keywords
 $url = "http://api.yutao.us/api/keyword/".$all;
+echo $url."<hr/>";
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($curl);
