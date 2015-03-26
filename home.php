@@ -78,22 +78,25 @@ $json = curl_exec($curl);
 curl_close($curl);
 $obj = json_decode($json);
 $all = "";
+$keywords = "";
 for ($i=0; $i<count($obj->statuses);$i ++) {
     $p = $obj->statuses[$i];
     $content = $p->text;
     if ($re = $p->retweeted_status) {
         $content .= $re->text;
     }
-    $all .= $content;
+    $all .= trim($content, '\\');
+    if ($i %10 ==0) {
+        $keywords.= getkeywords($all);
+        $all = "";
+    }
     echo $content.'<hr/>';
 }
 
-//get keywords
-$url = "http://api.yutao.us/api/keyword/".$all;
-echo $url."<hr/>";
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-$json = curl_exec($curl);
+echo $keywords;
+
+
+
 curl_close($curl);
 echo $json;
 
