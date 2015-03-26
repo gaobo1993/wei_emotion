@@ -83,14 +83,14 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
     if ($re = $p->retweeted_status) {
         $content .= $re->text;
     }
-    $keywords = getkeywords($content);
-    echo $content.'<br/>'.$keywords.'<hr/>';
+    $all .= $content;
+   
+   // echo $content.'<br/>'.$keywords.'<hr/>';
 }
 
+$keywords = getkeywords(str_replace('/', '', $all));
 
-
-curl_close($curl);
-echo $json;
+echo $keywords;
 
 
 $mysqli->close();
