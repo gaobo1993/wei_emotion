@@ -38,7 +38,7 @@ if (mysqli_connect_error()) {
 $query = "show tables like 'users'";
 if ($result = $mysqli->query($query)) {
     if ($result->num_rows==0) {
-        $create = "create table users(id bigint not null primary key, screen_name varchar(20)";
+        $create = "create table users(id bigint not null primary key, screen_name varchar(20), num int,";
         for ($i =0; $i<100; $i ++) {
             $create .= (",post".$i." text");
         }
@@ -77,10 +77,10 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
         $content .= $re->text;
     }
     $query .= (" post".$i."=");
-    $query .= ("'".$content."'");
-    if ($i != (count($obj->statuses)-1)) $query.= ",";
+    $query .= ("'".$content."',");
     $all .= $content;
 }
+$query .= ("num = ".count($obj->statuses));
 $query .= " where t.id =";
 $query .= $uid;
 echo "<hr/>".$query."<hr/>";
