@@ -10,7 +10,7 @@
 <br/>
 
 <?php
-/*
+
 $code = $_GET['code'];
 echo $code;
 
@@ -26,34 +26,40 @@ global $token = $obj->access_token;
 $uid = $obj->uid;
 //get user information
 $url = "https://api.weibo.com/2/users/show.json?access_token=" . $token."&uid=" . $uid;
-echo "<hr/>";
-echo $url;
-echo "<hr/>";
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($curl);
 curl_close($curl);
 $array = json_decode($json, true);// information
-echo $array;*/
+
 $mysqli = new mysqli("10.9.1.188", "LW70AGqB1OOFgzAO", "HJmN4DfBEnQ0ajEH", "cf_e61290b4_5735_47e5_891e_d13c3a00d3e3");
 if (mysqli_connect_error()) {
     die('Connect Error('.mysqli_connect_errno() .')'.mysqli_connect_error());
 }
-echo 'success ...' . $mysqli->host_info.'<br/>';
-
-$uid = 1000;
-$screen_name = "swnhieian";
+//create table
+$query = "show tables like 'users'";
+if ($result = $mysqli->query($query)) {
+    if ($result->num_rows==0) {
+        if (!$mysqli->query("create table users(id not null int primary key,
+                                           screen_name varchar(20)) 
+                                           default charset=utf8;"))
+            echo "create error".$mysqli->error;
+    }
+} else {echo "query table error".$mysqli->error;}
+//insert user info
+$screen_name = $array['screen_name'];
 $query = "insert into users(id, screen_name) values (?,?)";
 echo "<hr/>".$query."<hr/>";
 if ($stmt = $mysqli->prepare($query)) {
     $stmt->bind_param("is", $uid, $screen_name);
     $stmt->execute();
     $stmt->close();
-    echo "success"."<br/>";
 } else {
-echo "fail".$mysqli->errno.":".$mysqli->error;
+echo "fail to insert into table".$mysqli->errno.":".$mysqli->error;
 }
+
 $mysqli->close();
+
 /*
 if (!$con) {
     die('Could not connect: ' . mysql_error());
