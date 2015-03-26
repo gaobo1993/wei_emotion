@@ -1,4 +1,5 @@
 <?php
+require 'tool.php';
 $uid = $_GET['uid'];
 $key = $_GET['keywords'];
 $mysqli = new mysqli("10.9.1.188", "LW70AGqB1OOFgzAO", "HJmN4DfBEnQ0ajEH", "cf_e61290b4_5735_47e5_891e_d13c3a00d3e3");
@@ -11,7 +12,7 @@ $num = 0;
 if ($result = $mysqli->query($query)) {
     $row = $result->fecth_array(MYSQLI_NUM);
     $num = $row[0];
-}
+}/*
 $query = "select "
 for ($i=0; $i<$num-1; $i ++) {
     $query .= ("post".$i.",");
@@ -23,10 +24,11 @@ if ($result = $mysqli->query($query)) {
     for($i=0; $i<$num; $i ++)
         echo $row[$i]."<hr/>";
 }
+*/
+
 $mysqli->close();
 
-
-
+echo $num."<hr/>";
 echo $uid;
 echo "<br/><hr/>";
 echo $key;
