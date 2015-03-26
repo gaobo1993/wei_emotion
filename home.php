@@ -22,7 +22,9 @@ $json = curl_exec($curl);
 curl_close($curl);
 $obj = json_decode($json);
 var_dump($obj);
-global $token = $obj->access_token;
+
+/*
+$token = $obj->access_token;
 $uid = $obj->uid;
 //get user information
 $url = "https://api.weibo.com/2/users/show.json?access_token=" . $token."&uid=" . $uid;
@@ -37,6 +39,9 @@ if (mysqli_connect_error()) {
     die('Connect Error('.mysqli_connect_errno() .')'.mysqli_connect_error());
 }
 echo "success...".$mysqli->host_info.'<br/>';
+*/
+
+
 //create table
 /*
 $query = "show tables like 'users'";
@@ -62,7 +67,7 @@ if ($stmt = $mysqli->prepare($query)) {
 echo "fail to insert into table".$mysqli->errno.":".$mysqli->error;
 }*/
 
-$mysqli->close();
+//$mysqli->close();
 
 /*
 if (!$con) {
