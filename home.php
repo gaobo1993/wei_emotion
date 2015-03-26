@@ -70,7 +70,8 @@ echo "fail to insert into table".$mysqli->errno.":".$mysqli->error;
 
 echo "<hr/><hr/>";
 //get user posts
-$url = "https://api.weibo.com/2/statuses/public_timeline.json?access_token=".$token."&count=100";
+$url = "https://api.weibo.com/2/statuses/user_timeline.json?access_token=".$token.
+       "&uid=".$uid."&count=100&trim_user=1";
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($curl);
