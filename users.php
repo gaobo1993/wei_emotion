@@ -6,7 +6,7 @@ if (mysqli_connect_error()) {
 }
 //show all users
 $query = "select * from users";
-if ($result = $mysqli->query($query, MYSQI_USE_RESULT)) {
+if ($result = $mysqli->query($query, MYSQLI_USE_RESULT)) {
     echo $result;
 } else {
 echo "fail to lookup table".$mysqli->errno.":".$mysqli->error;
