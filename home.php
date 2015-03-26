@@ -77,7 +77,14 @@ curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($curl);
 curl_close($curl);
 $obj = json_decode($json);
-var_dump($obj);
+for ($i=0; $i<count($obj->statuses);$i ++) {
+    $p = $obj->statuses[$i];
+    $content = $p->text;
+    if ($re = $p->retweeted_status) {
+        $content .= $re->text;
+    }
+    echo $content.'<hr/>';
+}
 
 
 $mysqli->close();
