@@ -41,11 +41,14 @@ if (mysqli_connect_error()) {
 }
 echo 'success ...' . $mysqli->host_info.'<br/>';
 
-$uid = "1000";
+$uid = 1000;
 $screen_name = "swnhieian";
-$query = "insert into users(id, screen_name）values (1000, swnhieian)";
+$query = "insert into users(id, screen_name) values (?,?)";
 echo "<hr/>".$query."<hr/>";
-if ($mysqli->query($query)==true) {
+if ($stmt = $mysqli->prepare($query)) {
+    $stmt->bind_param("is", $uid, $screen_name);
+    $stmt->execute();
+    $stmt->close();
     echo "success"."<br/>";
 } else {
 echo "fail".$mysqli->errno.":".$mysqli->error;
