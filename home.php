@@ -37,6 +37,7 @@ if (mysqli_connect_error()) {
     die('Connect Error('.mysqli_connect_errno() .')'.mysqli_connect_error());
 }
 //create table
+/*
 $query = "show tables like 'users'";
 if ($result = $mysqli->query($query)) {
     if ($result->num_rows==0) {
@@ -45,7 +46,7 @@ if ($result = $mysqli->query($query)) {
                                            default charset=utf8"))
             echo "create error".$mysqli->error;
     }
-} else {echo "query table error".$mysqli->error;}
+} else {echo "query table error".$mysqli->error;}*/
 //insert user info
 $screen_name = $array['screen_name'];
 $query = "insert into users(id, screen_name) values (?,?)";
