@@ -11,8 +11,7 @@ $query = "select num from users where id = ".$uid;
 echo $query;
 $num = 0;
 if ($result = $mysqli->query($query)) {
-    $row = $result->fetch_array(MYSQLI_NUM);
-    var_dump($row);
+    var_dump($result);
 } else {echo "select errro".$mysqli->errno.".".$mysqli->error;
 /*
 $query = "select "
