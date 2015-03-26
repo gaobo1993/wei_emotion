@@ -87,6 +87,7 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
     }
     $all .= trim($content, '\\');
     if ($i %10 ==0) {
+        echo "////////////////:".$all."<br/>";
         $keywords.= getkeywords($all);
         $all = "";
     }
