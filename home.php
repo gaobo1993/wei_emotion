@@ -76,7 +76,8 @@ $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($curl);
 $curl_close($curl);
-var_dump($json);
+$obj = json_decode($json);
+var_dump($obj);
 
 
 $mysqli->close();
