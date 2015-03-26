@@ -6,10 +6,11 @@
     <title>WeiConnet</title>
 </head>
 <body>
-It works!
+
 <br/>
 
 <?php
+/*
 $code = $_GET['code'];
 echo $code;
 
@@ -33,8 +34,15 @@ curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($curl);
 curl_close($curl);
 $array = json_decode($json, true);// information
-echo $array;
-$con = mysql_connect("10.9.1.188:3306", "LW70AGqB1OOFgzAO", "HJmN4DfBEnQ0ajEH");
+echo $array;*/
+echo "here";
+$con = new mysqli("10.9.1.188", "LW70AGqB1OOFgzAO", "HJmN4DfBEnQ0ajEH", "cf_e61290b4_5735_47e5_891e_d13c3a00d3e3");
+echo "there";
+if (mysqli_connect_error()) {
+    die('Connect Error('.mysqli_connect_errno() .')'.mysqli_connect_error());
+}
+echo 'success ...' . $mysqli->host_info.'\n';
+/*
 if (!$con) {
     die('Could not connect: ' . mysql_error());
 }
@@ -48,8 +56,8 @@ if (mysql_num_rows(mysql_query("show tables like 'users'"))==0) {
 }
 mysql_query("insert into users (id, screen_name) values ('".$array['id'].
             "','".$array['screen_name']."')");
-            
-mysql_close($con);
+            */
+//mysql_close($con);
 
 //save 100 posts
 //save keywords
