@@ -42,13 +42,16 @@ if (mysqli_connect_error()) {
     die('Connect Error('.mysqli_connect_errno() .')'.mysqli_connect_error());
 }
 echo 'success ...' . $mysqli->host_info.'\n';
-$query = "insert into users(id, screen_name） values (?,?)";
-$result = $mysqli->prepare($query);
-$result->bind_param("is", $uid, $screen_name);
+
 $uid = 1000;
 $screen_name = "swnhieian";
-$result->execute();
-$result->close();
+$query = "insert into users(id, screen_name）values (?,?)";
+if ($result = $mysqli->prepare($query)) {
+    $result->bind_param("is", $uid, $screen_name);
+    $result->execute();
+    $result->close();
+    echo "success"."<br/>";
+}
 $mysqli->close();
 /*
 if (!$con) {
