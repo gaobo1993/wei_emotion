@@ -40,9 +40,9 @@ if (mysqli_connect_error()) {
 $query = "show tables like 'users'";
 if ($result = $mysqli->query($query)) {
     if ($result->num_rows==0) {
-        if (!$mysqli->query("create table users(id not null int primary key,
+        if (!$mysqli->query("create table users(id int not null primary key,
                                            screen_name varchar(20)) 
-                                           default charset=utf8;"))
+                                           default charset=utf8"))
             echo "create error".$mysqli->error;
     }
 } else {echo "query table error".$mysqli->error;}
