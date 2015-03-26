@@ -10,10 +10,10 @@ if (mysqli_connect_error()) {
 $query = "select num from users where id = ".$uid;
 $num = 0;
 if ($result = $mysqli->query($query)) {
-    $row = $result->fecth_array(MYSQLI_NUM);
+    $row = $result->fetch_array(MYSQLI_NUM);
     var_dump($row);
     $num = $row[0];
-} /*
+} 
 $query = "select "
 for ($i=0; $i<$num-1; $i ++) {
     $query .= ("post".$i.",");
@@ -25,7 +25,7 @@ if ($result = $mysqli->query($query)) {
     for($i=0; $i<$num; $i ++)
         echo $row[$i]."<hr/>";
 }
-*/
+
 
 $mysqli->close();
 
