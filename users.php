@@ -6,8 +6,13 @@ if (mysqli_connect_error()) {
 }
 //show all users
 $query = "select * from users";
-if ($result = $mysqli->query($query, MYSQLI_USE_RESULT)) {
-    echo var_dump($result);
+if ($stmt = $mysqli->prepare($query)) {
+    $stmt->execute();
+    $stmt->bind_result($id, $screen_name);
+    while ($stmt->fetch()) {
+        printf("%d %s\n", $id, $screen_name);
+    }
+    $stmt->close();
 } else {
 echo "fail to lookup table".$mysqli->errno.":".$mysqli->error;
 }
