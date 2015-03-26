@@ -36,6 +36,7 @@ $mysqli = new mysqli("10.9.1.188", "LW70AGqB1OOFgzAO", "HJmN4DfBEnQ0ajEH", "cf_e
 if (mysqli_connect_error()) {
     die('Connect Error('.mysqli_connect_errno() .')'.mysqli_connect_error());
 }
+echo "success...".$mysqli->host_info.'<br/>';
 //create table
 /*
 $query = "show tables like 'users'";
@@ -55,6 +56,7 @@ if ($stmt = $mysqli->prepare($query)) {
     $stmt->bind_param("is", $uid, $screen_name);
     $stmt->execute();
     $stmt->close();
+    echo "success insert into table";
 } else {
 echo "fail to insert into table".$mysqli->errno.":".$mysqli->error;
 }
