@@ -48,6 +48,7 @@ if ($result = $mysqli->query($query)) {
             echo "create error".$mysqli->error;
     }
 } else {echo "query table error".$mysqli->error;}*/
+/*
 //insert user info
 $screen_name = $array['screen_name'];
 $query = "insert into users(id, screen_name) values (?,?)";
@@ -59,7 +60,7 @@ if ($stmt = $mysqli->prepare($query)) {
     echo "success insert into table";
 } else {
 echo "fail to insert into table".$mysqli->errno.":".$mysqli->error;
-}
+}*/
 
 $mysqli->close();
 
