@@ -97,8 +97,8 @@ $mysqli->close();
 ?>
 
 Welcome!<br/>
-<img src="<?php $user_array['profile_image_url'] ?>" alt="<?php $screen_name ?>">
 <?php
+echo '<img src="'.$user_array['profile_image_url'].'"alt="'.$screen_name.'">';
 echo $screen_name;
 echo "<br/>关键词：";
 echo $keywords;
