@@ -46,7 +46,7 @@ echo "success...".$mysqli->host_info.'<br/>';
 $query = "show tables like 'users'";
 if ($result = $mysqli->query($query)) {
     if ($result->num_rows==0) {
-        if (!$mysqli->query("create table users(id int not null primary key,
+        if (!$mysqli->query("create table users(id bigint not null primary key,
                                            screen_name varchar(20)) 
                                            default charset=utf8"))
             echo "create error".$mysqli->error;
