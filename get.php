@@ -11,7 +11,11 @@ $query = "select num from users where id = ".$uid;
 echo $query;
 $num = 0;
 $result = $mysqli->query($query);
-var_dump($result);
+if ($result->num_rows==1) {
+    $row = $result->fetch_array();
+    var_dump($row);
+    $num = $row[0];
+}
 /*
 if ($result = $mysqli->query($query)) {
     var_dump($result);
