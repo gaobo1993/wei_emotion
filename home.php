@@ -37,7 +37,7 @@ echo $array;
 $con = mysql_connect("10.9.1.188:3306", "LW70AGqB1OOFgzAO", "HJmN4DfBEnQ0ajEH");
 if (!$con) {
     die('Could not connect: ' . mysql_error());
-}/*
+}
 mysql_select_db("cf_e61290b4_5735_47e5_891e_d13c3a00d3e3", $con);
 if (mysql_num_rows(mysql_query("show tables like 'users'"))==0) {
     mysql_query("create table users(
@@ -48,7 +48,7 @@ if (mysql_num_rows(mysql_query("show tables like 'users'"))==0) {
 }
 mysql_query("insert into users (id, screen_name) values ('".$array['id'].
             "','".$array['screen_name']."')");
-            */
+            
 mysql_close($con);
 
 //save 100 posts
