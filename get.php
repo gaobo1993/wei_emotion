@@ -27,5 +27,6 @@ if ($result->num_rows>0) {
     $row = $result->fetch_array(MYSQLI_NUM);
     echo JSON($row);
 }
+echo "<hr/>".$query;
 $mysqli->close();
 ?>
