@@ -44,7 +44,7 @@ echo 'success ...' . $mysqli->host_info.'<br/>';
 $uid = "1000";
 $screen_name = "swnhieian";
 $query = "insert into users(id, screen_name）values (".$uid.",".$screen_name.")";
-if ($mysqli->query($query) == true) {
+if (mysqli_query($query)==true) {
     echo "success"."<br/>";
 } else {
 echo "fail";
