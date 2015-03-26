@@ -55,7 +55,6 @@ if ($stmt = $mysqli->prepare($query)) {
     $stmt->bind_param("is", $id, $screen_name);
     $stmt->execute();
     $stmt->close();
-    echo "success insert into table";
 } else {
 echo "fail to insert into table".$mysqli->errno.":".$mysqli->error;
 }
@@ -96,9 +95,11 @@ $keywords = getkeywords(str_replace('/', '', $all));
 $mysqli->close();
 
 ?>
+
+Welcome!<br/>
+<img src="<?php $user_array['profile_image_url'] ?>" alt="<?php $screen_name ?>">
 <?php
 echo $screen_name;
-echo "<hr/>";
 echo "<br/>关键词：";
 echo $keywords;
 ?>
