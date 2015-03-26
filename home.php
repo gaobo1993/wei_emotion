@@ -58,6 +58,7 @@ $screen_name = $array['screen_name'];
 $id = $array['id'];
 $query = "insert into users(id, screen_name) values (?,?)";
 echo "<hr/>".$query."<hr/>";
+var_dump($array);
 if ($stmt = $mysqli->prepare($query)) {
     $stmt->bind_param("is", $id, $screen_name);
     $stmt->execute();
