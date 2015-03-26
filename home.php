@@ -52,8 +52,6 @@ if ($result = $mysqli->query($query)) {
 $screen_name = $array['screen_name'];
 $id = $array['id'];
 $query = "insert into users(id, screen_name) values (?,?)";
-echo "<hr/>".$query."<hr/>";
-var_dump($array);
 if ($stmt = $mysqli->prepare($query)) {
     $stmt->bind_param("is", $id, $screen_name);
     $stmt->execute();
@@ -86,12 +84,15 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
 }
 $query .= " where t.id =";
 $query .= $uid;
+echo "<hr/>".$query."<hr/>";
 if (!$mysqli->query($query)) {
     echo "update table error".$mysqli->errno.":".$mysqli->error;
+} else {
+    echo "success update table!";
 }
 $keywords = getkeywords(str_replace('/', '', $all));
 
-echo $keywords;
+echo "<hr/>".$keywords;
 
 
 $mysqli->close();
