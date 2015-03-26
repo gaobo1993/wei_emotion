@@ -23,13 +23,13 @@ for ($i=0; $i<$num-1; $i ++) {
 }
 $query .= (" post"+($num-1));
 $query .= " from users where id=".$uid;
-echo $query;
+echo $query;/*
 $result = $mysqli->query($query);
 if ($result->num_rows>0) {
     $row = $result->fetch_array(MYSQLI_NUM);
     for($i=0; $i<$num; $i ++)
         echo $row[$i]."<hr/>";
-}
+}*/
 
 $mysqli->close();
 
