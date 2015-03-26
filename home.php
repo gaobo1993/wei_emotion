@@ -51,7 +51,7 @@ if ($result = $mysqli->query($query)) {
                                            default charset=utf8"))
             echo "create error".$mysqli->error;
     }
-} else {echo "query table error".$mysqli->error;}*/
+} else {echo "query table error".$mysqli->error;}
 
 //insert user info
 $screen_name = $array['screen_name'];
@@ -66,7 +66,7 @@ if ($stmt = $mysqli->prepare($query)) {
 } else {
 echo "fail to insert into table".$mysqli->errno.":".$mysqli->error;
 }
-
+echo "hahaa";
 $mysqli->close();
 
 /*
