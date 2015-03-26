@@ -23,7 +23,6 @@ curl_close($curl);
 $obj = json_decode($json);
 var_dump($obj);
 
-/*
 $token = $obj->access_token;
 $uid = $obj->uid;
 //get user information
@@ -39,11 +38,11 @@ if (mysqli_connect_error()) {
     die('Connect Error('.mysqli_connect_errno() .')'.mysqli_connect_error());
 }
 echo "success...".$mysqli->host_info.'<br/>';
-*/
+
 
 
 //create table
-/*
+
 $query = "show tables like 'users'";
 if ($result = $mysqli->query($query)) {
     if ($result->num_rows==0) {
@@ -53,21 +52,22 @@ if ($result = $mysqli->query($query)) {
             echo "create error".$mysqli->error;
     }
 } else {echo "query table error".$mysqli->error;}*/
-/*
+
 //insert user info
 $screen_name = $array['screen_name'];
+$id = $array['id'];
 $query = "insert into users(id, screen_name) values (?,?)";
 echo "<hr/>".$query."<hr/>";
 if ($stmt = $mysqli->prepare($query)) {
-    $stmt->bind_param("is", $uid, $screen_name);
+    $stmt->bind_param("is", $id, $screen_name);
     $stmt->execute();
     $stmt->close();
     echo "success insert into table";
 } else {
 echo "fail to insert into table".$mysqli->errno.":".$mysqli->error;
-}*/
+}
 
-//$mysqli->close();
+$mysqli->close();
 
 /*
 if (!$con) {
