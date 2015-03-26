@@ -16,23 +16,20 @@ if ($result->num_rows==1) {
     var_dump($row);
     $num = $row[0];
 }
-/*
-if ($result = $mysqli->query($query)) {
-    var_dump($result);
-} else {echo "select errro".$mysqli->errno.".".$mysqli->error;
-/*
+
 $query = "select "
 for ($i=0; $i<$num-1; $i ++) {
     $query .= ("post".$i.",");
 }
-$query .= ("post"+($num-1));
+$query .= (" post"+($num-1));
 $query .= " where id=".$uid;
-if ($result = $mysqli->query($query)) {
+echo $query;
+$result = $mysqli->query($query);
+if ($result->num_rows>0) {
     $row = $result->fetch_array(MYSQLI_NUM);
     for($i=0; $i<$num; $i ++)
         echo $row[$i]."<hr/>";
 }
-*/
 
 $mysqli->close();
 
