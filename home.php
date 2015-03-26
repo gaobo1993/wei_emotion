@@ -35,13 +35,11 @@ $json = curl_exec($curl);
 curl_close($curl);
 $array = json_decode($json, true);// information
 echo $array;*/
-echo "here";
 $mysqli = new mysqli("10.9.1.188", "LW70AGqB1OOFgzAO", "HJmN4DfBEnQ0ajEH", "cf_e61290b4_5735_47e5_891e_d13c3a00d3e3");
-echo "there";
 if (mysqli_connect_error()) {
     die('Connect Error('.mysqli_connect_errno() .')'.mysqli_connect_error());
 }
-echo 'success ...' . $mysqli->host_info.'\n';
+echo 'success ...' . $mysqli->host_info.'<br/>';
 
 $uid = 1000;
 $screen_name = "swnhieian";
@@ -51,6 +49,8 @@ if ($result = $mysqli->prepare($query)) {
     $result->execute();
     $result->close();
     echo "success"."<br/>";
+} else {
+echo "fail";
 }
 $mysqli->close();
 /*
