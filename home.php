@@ -11,9 +11,9 @@
 
 <?php
 require 'tool.php';
+//get token and uid
 $code = $_GET['code'];
 echo $code;
-
 $url = "https://api.weibo.com/oauth2/access_token?client_id=3128512954&client_secret=f4b76f3f0ebf32b31e06748cb10b6327&grant_type=authorization_code&redirect_uri=weiconnect.coding.io/home.php&code=" . $code;
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_POST, 1);
@@ -21,8 +21,6 @@ curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($curl);
 curl_close($curl);
 $obj = json_decode($json);
-var_dump($obj);
-
 $token = $obj->access_token;
 $uid = $obj->uid;
 //get user information
@@ -31,28 +29,25 @@ $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($curl);
 curl_close($curl);
-$array = json_decode($json, true);// information
-
+$array = json_decode($json, true);
+// connect mysql database
 $mysqli = new mysqli("10.9.1.188", "LW70AGqB1OOFgzAO", "HJmN4DfBEnQ0ajEH", "cf_e61290b4_5735_47e5_891e_d13c3a00d3e3");
 if (mysqli_connect_error()) {
     die('Connect Error('.mysqli_connect_errno() .')'.mysqli_connect_error());
 }
-echo "success...".$mysqli->host_info.'<br/>';
-
-
-
 //create table
-
 $query = "show tables like 'users'";
 if ($result = $mysqli->query($query)) {
     if ($result->num_rows==0) {
-        if (!$mysqli->query("create table users(id bigint not null primary key,
-                                           screen_name varchar(20)) 
-                                           default charset=utf8"))
+        $create = "create table users(id bigint not null primary key, screen_name varchar(20)";
+        for ($i =0; $i<100; $i ++) {
+            $create .= (",post".$i." varchar(500)");
+        }
+        $create .= ") default charset=utf8";
+        if (!$mysqli->query($create))
             echo "create error".$mysqli->error;
     }
 } else {echo "query table error".$mysqli->error;}
-
 //insert user info
 $screen_name = $array['screen_name'];
 $id = $array['id'];
@@ -67,9 +62,10 @@ if ($stmt = $mysqli->prepare($query)) {
 } else {
 echo "fail to insert into table".$mysqli->errno.":".$mysqli->error;
 }
+//get user posts and update the database
+$query = "update users t";
+$query .= "set";
 
-echo "<hr/><hr/>";
-//get user posts
 $url = "https://api.weibo.com/2/statuses/user_timeline.json?access_token=".$token.
        "&uid=".$uid."&count=100&trim_user=1";
 $curl = curl_init($url);
@@ -83,11 +79,16 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
     if ($re = $p->retweeted_status) {
         $content .= $re->text;
     }
+    $query .= (" post".$i."=");
+    $query .= ("'".$content."'");
+    if ($i != (count($obj->statuses)-1)) $query.= ",";
     $all .= $content;
-   
-   // echo $content.'<br/>'.$keywords.'<hr/>';
 }
-
+$query .= " where t.id =";
+$query .= $uid;
+if (!$mysqli->query($query)) {
+    echo "update table error".$mysqli->errno.":".$mysqli->error;
+}
 $keywords = getkeywords(str_replace('/', '', $all));
 
 echo $keywords;
