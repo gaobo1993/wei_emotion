@@ -10,7 +10,7 @@
 <br/>
 
 <?php
-
+require 'tool.php';
 $code = $_GET['code'];
 echo $code;
 
@@ -92,7 +92,8 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
     }
     echo $content.'<hr/>';
 }
-
+$keywords.= getkeywords($all);
+$all = "";
 echo $keywords;
 
 
