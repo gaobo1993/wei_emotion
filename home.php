@@ -64,7 +64,7 @@ if ($result = $mysqli->query($query)) {
     if ($result->num_rows==0) {
         $create = "create table users(id bigint not null primary key, screen_name varchar(20),num int";
         for ($i =0; $i<100; $i ++) {
-            $create .= (",post".$i." longtext");
+            $create .= (",post".$i." blob");
         }
         $create .= ",keywords text) default charset=utf8";
         if (!$mysqli->query($create))
