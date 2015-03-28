@@ -131,7 +131,7 @@ $mysqli->close();
 $keywords_array = split(',',$keywords);
 for ($i=0; $i<count($keywords_array); $i++) {
     if (count($keywords_array[$i])>0) {
-        echo '<span class="label label-info">'.$keywords_array[$i].'</span>';
+        echo '<span class="label label-info">'.$keywords_array[$i].'</span>&nbsp;';
     }
 }
 
@@ -139,6 +139,9 @@ for ($i=0; $i<count($keywords_array); $i++) {
 <h5/>
 
 <hr/>
+<div class="panel">
+<div class="panel-heading">最近微博</div>
+<div class="panel-body">
 <ul class="list-group">
 <?php
 for ($i=0; $i<count($posts); $i++) {
@@ -146,6 +149,8 @@ for ($i=0; $i<count($posts); $i++) {
 }
 ?>
 </ul>
+</div>
+</div>
 
 <script>
 function logout() {
