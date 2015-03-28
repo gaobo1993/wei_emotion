@@ -20,7 +20,7 @@ if ($result->num_rows>0) {
 
 
 if ($key == '1') {
-    $query = "select keywords from users where id=".$uid;
+    $query = "select keywords from users where uid=".$uid;
     $result = $mysqli->query($query);
     if ($result->num_rows>0) {
         $keywords_row = $result->fetch_array();
