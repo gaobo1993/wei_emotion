@@ -66,7 +66,7 @@ if ($result = $mysqli->query($query)) {
         for ($i =0; $i<100; $i ++) {
             $create .= (",post".$i." longtext");
         }
-        $create .= ",keywords text)";
+        $create .= ",keywords text) row_format=compressed";
         if (!$mysqli->query($create))
             echo "create error".$mysqli->error;
     }
