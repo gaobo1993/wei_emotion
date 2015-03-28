@@ -29,10 +29,11 @@ if ($result->num_rows>0) {
 if ($key == 1) {
     $query = "select keywords from users where id=".$uid;
     $reslut = $mysqli->query($query);
-    if ($result->num_rows>0) {
-        $keywords_row = $result->fetch_array(MYSQLI_NUM);
+    if ($result->num_rows==1) {
+        $keywords_row = $result->fetch_array();
+        $keywords = $keywords_row[0];
     }
-    $ret = array("posts"=>$post_row, "keywords"=>$keywords_row[0]);
+    $ret = array("posts"=>$post_row, "keywords"=>$keywords);
 } else {
     $ret = array("posts"=>$post_row);
 }
