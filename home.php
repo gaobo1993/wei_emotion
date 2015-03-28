@@ -62,30 +62,31 @@ if (mysqli_connect_error()) {
 $query = "show tables like 'users'";
 if ($result = $mysqli->query($query)) {
     if ($result->num_rows==0) {
-        $create = "create table users(id bigint not null primary key, screen_name varchar(20),num int";
-        for ($i =0; $i<100; $i ++) {
-            $create .= (",post".$i." longtext");
-        }
-        $create .= ",keywords text) row_format=compressed";
+        $create = "create table users(uid bigint not null primary key, screen_name varchar(50),keywords longtext) default charset=utf8";
         if (!$mysqli->query($create))
-            echo "create error".$mysqli->error;
+            echo "create users error".$mysqli->error;
     }
-} else {echo "query table error".$mysqli->error;}
+} else {echo "query users table error".$mysqli->error;}
+$query = "show tables like 'posts'";
+if ($result = $mysqli->query($query)) {
+    if ($result->num_rows==0) {
+        $create = "create table posts(uid bigint not null, post longtext) default charset=utf8";
+        if (!$mysqli->query($create))
+            echo "create posts error".$mysqli->error;
+    }
+} else {echo "query posts table error".$mysqli->error;}
+
 //insert user info
 $screen_name = $user_array['screen_name'];
 $id = $user_array['id'];
-$query = "insert into users(id, screen_name) values (?,?)";
-if ($stmt = $mysqli->prepare($query)) {
-    $stmt->bind_param("is", $id, $screen_name);
-    $stmt->execute();
-    $stmt->close();
-} else {
-echo "fail to insert into table".$mysqli->errno.":".$mysqli->error;
-}
-//get user posts and update the database
-$query = "update users t ";
-$query .= "set ";
 
+//delete weibo posts if exists
+$query="delete from posts where uid=".$uid;
+if (!$mysqli->query($query)) {
+    echo "delete posts failed".$mysqli->errno.":".$mysqli->error;
+} else {echo "delete posts success";}
+
+//get weibo text
 $url = "https://api.weibo.com/2/statuses/user_timeline.json?access_token=".$token.
        "&uid=".$uid."&count=100&trim_user=1";
 $curl = curl_init($url);
@@ -100,28 +101,26 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
         $content .= $re->text;
     }
     $posts[$i] = $content;
-    $query .= (" post".$i."=");
     str_replace("'","''",$content);
     $content = emoji_unified_to_html($content);
-    $query .= ("'".$content."',");
+    $query = "insert into posts(uid, post) values(?,?)";
+    if ($stmt = $mysqli->prepare($query)) {
+        $stmt->bind_param("is", $id, $content);
+        $stmt->execute();
+        $stmt->close();
+    } else { echo "fail to insert into posts".$mysqli->errno.":".$mysqli->error;}
     $all .= $content;
 }
-$query .= ("num = ".count($obj->statuses));
-$query .= " where t.id =";
-$query .= $uid;
-if (!$mysqli->query($query)) {
-    echo "update table error".$mysqli->errno.":".$mysqli->error;
-}
+
 $keywords = getkeywords(str_replace('/', '', $all));
-$query = "update users t set keywords=? where t.id=".$uid;
+$query = "insert into users(uid, screen_name, keywords) values (?,?,?)";
 if ($stmt = $mysqli->prepare($query)) {
-    $stmt->bind_param("s", $keywords);
+    $stmt->bind_param("iss", $id, $screen_name, $keywords);
     $stmt->execute();
     $stmt->close();
 } else {
-    echo "fail to update keywords into table".$mysqli->errno.":".$mysqli->error;
+echo "fail to insert into table".$mysqli->errno.":".$mysqli->error;
 }
-
 
 $mysqli->close();
 
