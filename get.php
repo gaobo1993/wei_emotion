@@ -16,12 +16,9 @@ if ($result->num_rows>0) {
     while ($row = $result->fetch_row()) {
         array_push($post_row, $row[0]);
     }
-    echo "<hr/>";
-    echo var_dump($post_row);
-    echo "<hr/>";
 }
 
-/*
+
 if ($key == '1') {
     $query = "select keywords from users where uid=".$uid;
     $result = $mysqli->query($query);
@@ -32,8 +29,8 @@ if ($key == '1') {
     $ret = array("posts"=>$post_row, "keywords"=>$keywords);
 } else {
     $ret = array("posts"=>$post_row);
-}*/
-if ($num > 0)
+}
+if (count($post_row) > 0)
     echo JSON($ret);
 $mysqli->close();
 ?>
