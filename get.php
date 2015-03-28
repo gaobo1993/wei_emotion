@@ -32,7 +32,7 @@ if ($key == 1) {
     if ($result->num_rows>0) {
         $keywords_row = $result->fetch_array(MYSQLI_NUM);
     }
-    $ret = array("posts"=>$post_row, "keywords"=>$keywords_row);
+    $ret = array("posts"=>$post_row, "keywords"=>$keywords_row[0]);
 } else {
     $ret = array("posts"=>$post_row);
 }
