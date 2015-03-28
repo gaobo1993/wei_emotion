@@ -26,19 +26,14 @@ $result = $mysqli->query($query);
 if ($result->num_rows>0) {
     $post_row = $result->fetch_array(MYSQLI_NUM);
 }
-var_dump($key);
 if ($key == '1') {
     $query = "select keywords from users where id=".$uid;
     $result = $mysqli->query($query);
     if ($result->num_rows>0) {
         $keywords_row = $result->fetch_array();
-        var_dump($keywords_row);
         $keywords = $keywords_row[0];
     }
     $ret = array("posts"=>$post_row, "keywords"=>$keywords);
-    echo "<hr/>";
-    var_dump($ret);
-    echo "<hr/>";
 } else {
     $ret = array("posts"=>$post_row);
 }
