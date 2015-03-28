@@ -34,6 +34,9 @@ if ($key == 1) {
         $keywords = $keywords_row[0];
     }
     $ret = array("posts"=>$post_row, "keywords"=>$keywords);
+    echo "<hr/>";
+    echo $ret;
+    echo "<hr/>";
 } else {
     $ret = array("posts"=>$post_row);
 }

@@ -88,7 +88,9 @@ if (!$mysqli->query($query)) {
     echo "update table error".$mysqli->errno.":".$mysqli->error;
 }
 $keywords = getkeywords(str_replace('/', '', $all));
-echo "<hr/><hr/>";
+if ($keywords[count($keywords)-1]==",") {
+    $keywords = substr($keywords, 0, count($keywords)-2);
+}
 var_dump($keywords);
 $query = "insert into users(keywords) values (?)";
 if ($stmt = $mysqli->prepare($query)) {
