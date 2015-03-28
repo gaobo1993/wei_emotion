@@ -9,15 +9,28 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=3128512954" type="text/javascript" charset="utf-8"></script>
 </head>
-<body>
-<div class="navbar navbar-default navbar-fixed-top">
-    
-    <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right" id="navinfo">
-            <wb:login-button type="3,2" onlogout="logout">登录按钮</wb:login-button>            
-        </ul>
-      </div>
-</div>
+<body style="background-color:#ebf5fa">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header"  id="nav-head">
+      <a class="navbar-brand" href="http://weiconnect.coding.io">WeiConnect</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav"  id="navs">
+        <li class="active"><a href="http://weiconnect.coding.io">首页<span class="sr-only">(current)</span></a></li>
+        <li><a href="http://weiconnect.coding.io/apis.php">API</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><wb:login-button type="3,2" onlogout="logout">登录按钮</wb:login-button>            </li>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
 
 <?php
 require 'tool.php';
@@ -112,17 +125,24 @@ $mysqli->close();
 ?>
 <br/>
 Welcome!<br/>
+
+<h6>关键词<span class="label label-info">伯乐</span></h6>
+
 <?php
 echo '<img src="'.$user_array['profile_image_url'].'"alt="'.$screen_name.'">';
 echo $screen_name;
 echo "<br/>关键词：";
 echo $keywords;
+$keywords_array = split('，',$keywords);
+echo $keywords_array;
 ?>
+
+
 <hr/>
-<ul>
+<ul class="list-group">
 <?php
 for ($i=0; $i<count($posts); $i++) {
-    echo "<li>".$posts[$i]."</li>";
+    echo '<li class="list-group-item">'.$posts[$i].'</li>';
 }
 ?>
 </ul>
