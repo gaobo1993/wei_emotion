@@ -23,7 +23,7 @@
         <li class="active"><a href="http://weiconnect.coding.io">首页<span class="sr-only">(current)</span></a></li>
         <li><a href="http://weiconnect.coding.io/apis.php">API</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right well">
         <li><wb:login-button type="3,2" onlogout="logout">登录按钮</wb:login-button>            </li>
         </li>
       </ul>
@@ -133,7 +133,7 @@ echo '<img src="'.$user_array['profile_image_url'].'"alt="'.$screen_name.'">';
 echo $screen_name;
 echo "<br/>关键词：";
 echo $keywords;
-$keywords_array = split('，',$keywords);
+$keywords_array = split(',',$keywords);
 var_dump($keywords_array);
 ?>
 
