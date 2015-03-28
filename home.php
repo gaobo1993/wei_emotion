@@ -23,7 +23,7 @@
         <li class="active"><a href="http://weiconnect.coding.io">首页<span class="sr-only">(current)</span></a></li>
         <li><a href="http://weiconnect.coding.io/apis.php">API</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right well">
+      <ul class="nav navbar-nav navbar-right well-sm">
         <li><wb:login-button type="3,2" onlogout="logout">登录按钮</wb:login-button>            </li>
         </li>
       </ul>
@@ -124,19 +124,19 @@ $mysqli->close();
 
 ?>
 <br/>
-Welcome!<br/>
 
-<h6>关键词<span class="label label-info">伯乐</span></h6>
+<h5>关键词
 
 <?php
-echo '<img src="'.$user_array['profile_image_url'].'"alt="'.$screen_name.'">';
-echo $screen_name;
-echo "<br/>关键词：";
-echo $keywords;
 $keywords_array = split(',',$keywords);
-var_dump($keywords_array);
-?>
+for ($i=0; $i<count($keywords_array); $i++) {
+    if (count($keywords_array[$i])>0) {
+        echo '<span class="label label-info">'.$keywords_array[$i].'</span>';
+    }
+}
 
+?>
+<h5/>
 
 <hr/>
 <ul class="list-group">
