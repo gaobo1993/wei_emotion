@@ -6,7 +6,7 @@ if (mysqli_connect_error()) {
     die('Connect Error('.mysqli_connect_errno() .')'.mysqli_connect_error());
 }
 //show all users
-$query = "select id, screen_name from users";
+$query = "select uid, screen_name from users";
 if ($stmt = $mysqli->prepare($query)) {
     $stmt->execute();
     $stmt->bind_result($id, $screen_name);

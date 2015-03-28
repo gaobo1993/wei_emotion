@@ -42,11 +42,6 @@ function getkeywords($str) {
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
     $keywords = curl_exec($curl);
-    echo "<hr/>";
-    echo $str;
-    echo "<hr/>";
-    var_dump($keywords);
-    echo "<hr/>";
     curl_close($curl);
     return $keywords;
 }
