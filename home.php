@@ -4,6 +4,9 @@
     <meta property="wb:webmaster" content="3df8a9a1aa580df4" />
     <meta charset="UTF-8">
     <title>WeiConnet</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=3128512954" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
@@ -124,5 +127,7 @@ function logout() {
     window.location.href="http://weiconnect.coding.io";
 }
 </script>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
