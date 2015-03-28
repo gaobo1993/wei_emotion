@@ -89,7 +89,7 @@ if (!$mysqli->query($query)) {
 }
 $keywords = getkeywords(str_replace('/', '', $all));
 var_dump($keywords);
-$query = "insert into users(keywords) values (?)";
+$query = "update users t set keywords=? where t.id=".$uid;
 if ($stmt = $mysqli->prepare($query)) {
     $stmt->bind_param("s", $keywords);
     $stmt->execute();
