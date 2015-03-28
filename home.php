@@ -61,7 +61,7 @@ echo "fail to insert into table".$mysqli->errno.":".$mysqli->error;
 }
 //get user posts and update the database
 $query = "update users t ";
-$query .= "set";
+$query .= "set ";
 
 $url = "https://api.weibo.com/2/statuses/user_timeline.json?access_token=".$token.
        "&uid=".$uid."&count=100&trim_user=1";
@@ -88,13 +88,15 @@ if (!$mysqli->query($query)) {
     echo "update table error".$mysqli->errno.":".$mysqli->error;
 }
 $keywords = getkeywords(str_replace('/', '', $all));
+echo "<hr/><hr/>";
+var_dump($keywords);
 $query = "insert into users(keywords) values (?)";
 if ($stmt = $mysqli->prepare($query)) {
     $stmt->bind_param("s", $keywords);
     $stmt->execute();
     $stmt->close();
 } else {
-echo "fail to insert keywords into table".$mysqli->errno.":".$mysqli->error;
+    echo "fail to insert keywords into table".$mysqli->errno.":".$mysqli->error;
 }
 
 

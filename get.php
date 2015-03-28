@@ -24,8 +24,18 @@ $query .= (" post".($num-1));
 $query .= " from users where id=".$uid;
 $result = $mysqli->query($query);
 if ($result->num_rows>0) {
-    $row = $result->fetch_array(MYSQLI_NUM);
-    echo JSON($row);
+    $post_row = $result->fetch_array(MYSQLI_NUM);
 }
+if ($key == 1) {
+    $query = "select keywords from users where id=".$uid;
+    $reslut = $mysqli->query($query);
+    if ($result->num_rows>0) {
+        $keywords_row = $result->fetch_array(MYSQLI_NUM);
+    }
+    $ret = array("posts"=>$post_row, "keywords"=>$keywords_row);
+} else {
+    $ret = array("posts"=>$post_row);
+}
+echo JSON($ret);
 $mysqli->close();
 ?>
