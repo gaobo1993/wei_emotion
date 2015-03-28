@@ -61,7 +61,7 @@ echo "fail to insert into table".$mysqli->errno.":".$mysqli->error;
 }
 //get user posts and update the database
 $query = "update users t ";
-$query .= "set";
+$query .= "set ";
 
 $url = "https://api.weibo.com/2/statuses/user_timeline.json?access_token=".$token.
        "&uid=".$uid."&count=100&trim_user=1";
