@@ -88,7 +88,6 @@ if (!$mysqli->query($query)) {
     echo "update table error".$mysqli->errno.":".$mysqli->error;
 }
 $keywords = getkeywords(str_replace('/', '', $all));
-var_dump($keywords);
 $query = "update users t set keywords=? where t.id=".$uid;
 if ($stmt = $mysqli->prepare($query)) {
     $stmt->bind_param("s", $keywords);
@@ -119,6 +118,7 @@ for ($i=0; $i<count($posts); $i++) {
 }
 ?>
 </ul>
+
 <script>
 function logout() {
     window.location.href="http://weiconnect.coding.io";
