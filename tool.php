@@ -43,6 +43,8 @@ function getkeywords($str) {
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
     $keywords = curl_exec($curl);
     echo "<hr/>";
+    echo $str;
+    echo "<hr/>";
     var_dump($keywords);
     echo "<hr/>";
     curl_close($curl);
