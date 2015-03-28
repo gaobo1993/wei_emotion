@@ -95,7 +95,7 @@ if ($stmt = $mysqli->prepare($query)) {
     $stmt->execute();
     $stmt->close();
 } else {
-    echo "fail to insert keywords into table".$mysqli->errno.":".$mysqli->error;
+    echo "fail to update keywords into table".$mysqli->errno.":".$mysqli->error;
 }
 
 

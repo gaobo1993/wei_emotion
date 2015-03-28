@@ -26,6 +26,7 @@ $result = $mysqli->query($query);
 if ($result->num_rows>0) {
     $post_row = $result->fetch_array(MYSQLI_NUM);
 }
+var_dump($key);
 if ($key == 1) {
     $query = "select keywords from users where id=".$uid;
     $reslut = $mysqli->query($query);
