@@ -10,3 +10,18 @@ body {
 .clearfix {
     clear:both;
 }
+.navbar {
+    background-color: #2186f0;
+}
+#navs >li> a {
+    color: #fff !important;
+}
+#navs >li>a {
+    background-color: #2186f0;
+}
+#nav-head > a{
+    color: #fff;
+}
+* {
+    font-family: Microsoft YaHei;
+}

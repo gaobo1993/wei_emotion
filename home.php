@@ -134,7 +134,7 @@ echo $screen_name;
 echo "<br/>关键词：";
 echo $keywords;
 $keywords_array = split('，',$keywords);
-echo $keywords_array;
+var_dump($keywords_array);
 ?>
 
 
