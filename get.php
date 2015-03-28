@@ -8,24 +8,17 @@ if (mysqli_connect_error()) {
     die('Connect Error('.mysqli_connect_errno() .')'.mysqli_connect_error());
 }
 //show posts
-$query = "select num from users where id = ".$uid;
+$query = "select post from posts where uid=".$uid;
 $num = 0;
-$result = $mysqli->query($query);
-if ($result->num_rows==1) {
-    $row = $result->fetch_array();
-    $num = $row[0];
-}
-
-$query = "select ";
-for ($i=0; $i<$num-1; $i ++) {
-    $query .= ("post".$i.",");
-}
-$query .= (" post".($num-1));
-$query .= " from users where id=".$uid;
+$post_row = array();
 $result = $mysqli->query($query);
 if ($result->num_rows>0) {
-    $post_row = $result->fetch_array(MYSQLI_NUM);
+    while ($row = $result->fetch_row()) {
+        array_push($post_row, $row[0]);
+    }
 }
+
+
 if ($key == '1') {
     $query = "select keywords from users where id=".$uid;
     $result = $mysqli->query($query);
