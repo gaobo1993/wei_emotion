@@ -46,11 +46,11 @@
             <td>返回所有登录过的用户的uid和用户名</td>
         </tr>
         <tr>
-            <td><a href="http://weiconnect.coding.io/<uid>">weiconnect.coding.io/&lt;uid&gt;</a></td>
+            <td><a href="http://weiconnect.coding.io/posts/<uid>">weiconnect.coding.io/&lt;uid&gt;</a></td>
             <td>返回uid为&lt;uid&gt;的用户的最近微博（不超过100条）</td>
         </tr>
         <tr>
-            <td><a href="http://weiconnect.coding.io/<uid>?keywords=1">weiconnect.coding.io/&lt;uid&gt;?keywords=1</a></td>
+            <td><a href="http://weiconnect.coding.io/posts/<uid>?keywords=1">weiconnect.coding.io/&lt;uid&gt;?keywords=1</a></td>
             <td>返回uid为&lt;uid&gt;的用户的最近微博（不超过100条）及对应的关键词信息</td>
         </tr>
     </table>
