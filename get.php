@@ -37,6 +37,7 @@ if ($key == '1') {
 } else {
     $ret = array("posts"=>$post_row);
 }
-echo JSON($ret);
+if ($num > 0)
+    echo JSON($ret);
 $mysqli->close();
 ?>
