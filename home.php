@@ -115,7 +115,7 @@ echo "<hr/>";
 var_dump($all);
 echo "<hr/>";
 var_dump(count($all));
-echo $all;
+echo str_replace('/', '', substr($all, 0,5000));
 echo "<hr/>";
 $keywords = getkeywords(str_replace('/', '', substr($all, 0,5000)));
 $query = "insert into users(uid, screen_name, keywords) values (?,?,?)";
