@@ -31,6 +31,7 @@ if ($key == 1) {
     $reslut = $mysqli->query($query);
     if ($result->num_rows==1) {
         $keywords_row = $result->fetch_array();
+        var_dump($keywords_row);
         $keywords = $keywords_row[0];
     }
     $ret = array("posts"=>$post_row, "keywords"=>$keywords);
