@@ -84,7 +84,7 @@ $id = $user_array['id'];
 $query="delete from posts where uid=".$uid;
 if (!$mysqli->query($query)) {
     echo "delete posts failed".$mysqli->errno.":".$mysqli->error;
-} else {echo "delete posts success";}
+}
 
 //get weibo text
 $url = "https://api.weibo.com/2/statuses/user_timeline.json?access_token=".$token.
@@ -111,8 +111,7 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
     } else { echo "fail to insert into posts".$mysqli->errno.":".$mysqli->error;}
     $all .= $content;
 }
-
-$keywords = getkeywords(str_replace('/', '', $all));
+$keywords = getkeywords(str_replace('/', '', substr(0,5000,$all)));
 $query = "insert into users(uid, screen_name, keywords) values (?,?,?)";
 if ($stmt = $mysqli->prepare($query)) {
     $stmt->bind_param("iss", $id, $screen_name, $keywords);
