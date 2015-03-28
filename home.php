@@ -125,7 +125,7 @@ $mysqli->close();
 ?>
 <br/>
 
-<h5>关键词
+<h5><b>关键词</b>
 
 <?php
 $keywords_array = split(',',$keywords);
@@ -141,7 +141,7 @@ for ($i=0; $i<count($keywords_array); $i++) {
 <hr/>
 <div class="panel">
 <div class="panel-heading middle">
-    近期微博内容
+    <h3>近期微博内容</h3>
 </div>
 <div class="panel-body">
 <ul class="list-group">
