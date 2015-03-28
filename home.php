@@ -43,7 +43,7 @@ if ($result = $mysqli->query($query)) {
         for ($i =0; $i<100; $i ++) {
             $create .= (",post".$i." text");
         }
-        $create .= ") default charset=utf8";
+        $create .= ",keywords text) default charset=utf8";
         if (!$mysqli->query($create))
             echo "create error".$mysqli->error;
     }
@@ -88,7 +88,14 @@ if (!$mysqli->query($query)) {
     echo "update table error".$mysqli->errno.":".$mysqli->error;
 }
 $keywords = getkeywords(str_replace('/', '', $all));
-
+$query = "insert into users(keywords) values (?)";
+if ($stmt = $mysqli->prepare($query)) {
+    $stmt->bind_param("s", $keywords);
+    $stmt->execute();
+    $stmt->close();
+} else {
+echo "fail to insert keywords into table".$mysqli->errno.":".$mysqli->error;
+}
 
 
 $mysqli->close();
