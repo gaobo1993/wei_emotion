@@ -30,14 +30,14 @@ var_dump($key);
 if ($key == '1') {
     $query = "select keywords from users where id=".$uid;
     $reslut = $mysqli->query($query);
-    if ($result->num_rows==1) {
+    if ($result->num_rows>0) {
         $keywords_row = $result->fetch_array();
         var_dump($keywords_row);
         $keywords = $keywords_row[0];
     }
     $ret = array("posts"=>$post_row, "keywords"=>$keywords);
     echo "<hr/>";
-    echo $ret;
+    var_dump($ret);
     echo "<hr/>";
 } else {
     $ret = array("posts"=>$post_row);
