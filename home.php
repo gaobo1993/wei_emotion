@@ -34,6 +34,7 @@
 
 <?php
 require 'tool.php';
+require 'emoji.php';
 //get token and uid
 $code = $_GET['code'];
 $url = "https://api.weibo.com/oauth2/access_token?client_id=3128512954&client_secret=f4b76f3f0ebf32b31e06748cb10b6327&grant_type=authorization_code&redirect_uri=weiconnect.coding.io/home.php&code=" . $code;
@@ -101,6 +102,7 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
     $posts[$i] = $content;
     $query .= (" post".$i."=");
     str_replace("'","''",$content);
+    $content = emoji_unified_to_html($content);
     $query .= ("'".$content."',");
     $all .= $content;
 }
