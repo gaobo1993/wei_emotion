@@ -10,8 +10,14 @@
     <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=3128512954" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-
-<br/>
+<div class="navbar navbar-default navbar-fixed-top">
+    
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right" id="navinfo">
+            <wb:login-button type="3,2" onlogout="logout">登录按钮</wb:login-button>            
+        </ul>
+      </div>
+</div>
 
 <?php
 require 'tool.php';
@@ -104,7 +110,6 @@ if ($stmt = $mysqli->prepare($query)) {
 $mysqli->close();
 
 ?>
-<wb:login-button type="3,2" onlogout="logout">登录按钮</wb:login-button>
 <br/>
 Welcome!<br/>
 <?php
