@@ -98,9 +98,9 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
     if ($re = $p->retweeted_status) {
         $content .= $re->text;
     }
-    str_replace("'","",$content);
     $posts[$i] = $content;
     $query .= (" post".$i."=");
+    str_replace("'","''",$content);
     $query .= ("'".$content."',");
     $all .= $content;
 }
