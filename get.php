@@ -29,7 +29,7 @@ if ($result->num_rows>0) {
 var_dump($key);
 if ($key == '1') {
     $query = "select keywords from users where id=".$uid;
-    $reslut = $mysqli->query($query);
+    $result = $mysqli->query($query);
     if ($result->num_rows>0) {
         $keywords_row = $result->fetch_array();
         var_dump($keywords_row);
