@@ -140,7 +140,9 @@ for ($i=0; $i<count($keywords_array); $i++) {
 
 <hr/>
 <div class="panel">
-<div class="panel-heading">最近微博</div>
+<div class="panel-heading middle">
+    近期微博内容
+</div>
 <div class="panel-body">
 <ul class="list-group">
 <?php
