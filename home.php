@@ -113,7 +113,7 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
 }
 $process = str_replace('/', ' ', $all);
 $process = preg_replace('|[a-zA-Z]+|', ' ', $process);
-$process = substr($process, 0, 1000);
+$process = substr($process, 0, 2000);
 
 $url = "http://api.yutao.us/api/keyword/".$process;
     $curl = curl_init();
