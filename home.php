@@ -111,7 +111,7 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
     } else { echo "fail to insert into posts".$mysqli->errno.":".$mysqli->error;}
     $all .= $content;
 }
-$keywords = getkeywords(str_replace('/', '', substr($all, 0,5000)));
+$keywords = getkeywords(str_replace('/', '', $all));
 $query = "insert into users(uid, screen_name, keywords) values (?,?,?)";
 if ($stmt = $mysqli->prepare($query)) {
     $stmt->bind_param("iss", $id, $screen_name, $keywords);
