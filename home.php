@@ -114,7 +114,7 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
 $process = str_replace('/', ' ', $all);
 $process = preg_replace('|[a-zA-Z]+|', ' ', $process);
 $process = str_replace('@', '', $process);
-$process = substr($process, 0, 5000);
+$process = substr($process, 0, 10000);
 
 $url = "http://api.yutao.us/api/keyword/".$process;
 var_dump($url);
