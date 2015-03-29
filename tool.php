@@ -39,6 +39,7 @@ function JSON($array) {
 //get keywords
 function getkeywords($str) {
     $url = "http://api.yutao.us/api/keyword/".$str;
+    var_dump($url);
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
     $keywords = curl_exec($curl);
