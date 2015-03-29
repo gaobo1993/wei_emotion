@@ -43,7 +43,6 @@ function getkeywords($str) {
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
     $keywords = curl_exec($curl);
-    var_dump($keywords);
     curl_close($curl);
     return $keywords;
 }
