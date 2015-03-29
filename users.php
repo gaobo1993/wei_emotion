@@ -7,11 +7,14 @@ if (mysqli_connect_error()) {
 }
 //show all users
 $query = "select uid, screen_name from users";
+$return = array();
 if ($stmt = $mysqli->prepare($query)) {
     $stmt->execute();
     $stmt->bind_result($id, $screen_name);
     while ($stmt->fetch()) {
-        $return[$id] = $screen_name;
+        $person['uid'] = $id;
+        $person['screen_name'] = $screen_name;
+        array_push($return, $person);
     }
     $stmt->close();
 } else {
