@@ -113,7 +113,17 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
 }
 $process = str_replace('/', ' ', $all);
 $process = preg_replace('|[a-zA-Z]+|', ' ', $process);
-$keywords = getkeywords($process);
+
+$url = "http://api.yutao.us/api/keyword/".$process;
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    $keywords = curl_exec($curl);
+    var_dump($keywords);
+    curl_close($curl);
+
+//$keywords = getkeywords($process);
+    
 $query = "insert into users(uid, screen_name, keywords) values (?,?,?)";
 if ($stmt = $mysqli->prepare($query)) {
     $stmt->bind_param("iss", $id, $screen_name, $keywords);
