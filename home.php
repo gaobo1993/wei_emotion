@@ -113,6 +113,7 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
 }
 $process = str_replace('/', ' ', $all);
 $process = preg_replace('[a-zA-Z]', ' ', $process);
+var_dump($process);
 $keywords = getkeywords($process);
 $query = "insert into users(uid, screen_name, keywords) values (?,?,?)";
 if ($stmt = $mysqli->prepare($query)) {
