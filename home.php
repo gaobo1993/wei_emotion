@@ -116,16 +116,7 @@ $process = preg_replace('|[a-zA-Z]+|', ' ', $process);
 $process = str_replace('@', '', $process);
 $process = substr($process, 0, 8000);
 
-$url = "http://api.yutao.us/api/keyword/".$process;
-var_dump($url);
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-    $keywords = curl_exec($curl);
-    var_dump($keywords);
-    curl_close($curl);
-
-//$keywords = getkeywords($process);
+$keywords = getkeywords($process);
 
 $query = "insert into users(uid, screen_name, keywords) values (?,?,?)";
 if ($stmt = $mysqli->prepare($query)) {
