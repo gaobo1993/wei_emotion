@@ -112,7 +112,7 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
     $all .= $content;
 }
 $process = str_replace('/', ' ', $all);
-$process = preg_replace('|[a-zA-Z]+|', ' ', $process);
+$process = preg_replace('|[a-zA-Z#-+=]+|', ' ', $process);
 $process = str_replace('@', '', $process);
 $process = substr($process, 0, 8000);
 
