@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=3128512954" type="text/javascript" charset="utf-8"></script>
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=1128990285" type="text/javascript" charset="utf-8"></script>
 </head>
 <body style="background:url('img/index.jpg')">
 
@@ -31,7 +31,7 @@
 
 <script>
 function login(o) {
-    window.location.href = "https://api.weibo.com/oauth2/authorize?client_id=3128512954&response_type=code&redirect_uri=weiconnect.codingapp.com/home.php";
+    window.location.href = "https://api.weibo.com/oauth2/authorize?client_id=1128990285&response_type=code&redirect_uri=weiconnect.codingapp.com/home.php";
 }
 </script>
 <script src="js/jquery-1.11.1.min.js"></script>
