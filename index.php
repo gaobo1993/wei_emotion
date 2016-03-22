@@ -31,7 +31,7 @@
 
 <script>
 function login(o) {
-    window.location.href = "https://api.weibo.com/oauth2/authorize?client_id=3128512954&response_type=code&redirect_uri=weiconnect.coding.io/home.php";
+    window.location.href = "https://api.weibo.com/oauth2/authorize?client_id=3128512954&response_type=code&redirect_uri=weiconnect.codingapp.com/home.php";
 }
 </script>
 <script src="js/jquery-1.11.1.min.js"></script>
