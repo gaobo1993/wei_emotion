@@ -14,14 +14,14 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header"  id="nav-head">
-      <a class="navbar-brand" href="http://weiconnect.coding.io">WeiConnect</a>
+      <a class="navbar-brand" href="http://weiconnect.codingapp.com">WeiConnect</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav"  id="navs">
-        <li class="active"><a href="http://weiconnect.coding.io">首页<span class="sr-only">(current)</span></a></li>
-        <li><a href="http://weiconnect.coding.io/apis.php">API</a></li>
+        <li class="active"><a href="http://weiconnect.codingapp.com">首页<span class="sr-only">(current)</span></a></li>
+        <li><a href="http://weiconnect.codingapp.com/apis.php">API</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right well-sm">
         <li><wb:login-button type="3,2" onlogout="logout">登录按钮</wb:login-button>            </li>
