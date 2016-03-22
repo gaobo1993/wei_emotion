@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=3128512954" type="text/javascript" charset="utf-8"></script>
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=1128990285" type="text/javascript" charset="utf-8"></script>
 </head>
 <body style="background-color:#ebf5fa">
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -37,7 +37,7 @@ require 'tool.php';
 require 'emoji.php';
 //get token and uid
 $code = $_GET['code'];
-$url = "https://api.weibo.com/oauth2/access_token?client_id=3128512954&client_secret=f4b76f3f0ebf32b31e06748cb10b6327&grant_type=authorization_code&redirect_uri=weiconnect.coding.io/home.php&code=" . $code;
+$url = "https://api.weibo.com/oauth2/access_token?client_id=1128990285&client_secret=776dd72ee4125d87ae62037592a8614a&grant_type=authorization_code&redirect_uri=weiconnect.codingapp.com/home.php&code=" . $code;
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_POST, 1);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -54,7 +54,7 @@ $json = curl_exec($curl);
 curl_close($curl);
 $user_array = json_decode($json, true);
 // connect mysql database
-$mysqli = new mysqli("10.9.1.188", "bSjpPjgAFd4XHEhn", "KCuhIdJkhAqILkXS", "cf_2c9074ab_6d3e_4f67_93ef_fc0076f6c8b5");
+$mysqli = new mysqli("192.168.3.5", "bSjpPjgAFd4XHEhn", "KCuhIdJkhAqILkXS", "cf_2c9074ab_6d3e_4f67_93ef_fc0076f6c8b5");
 if (mysqli_connect_error()) {
     die('Connect Error('.mysqli_connect_errno() .')'.mysqli_connect_error());
 }
@@ -163,7 +163,7 @@ for ($i=0; $i<count($posts); $i++) {
 
 <script>
 function logout() {
-    window.location.href="http://weiconnect.coding.io";
+    window.location.href="http://weiconnect.codingapp.com";
 }
 </script>
 <script src="js/jquery-1.11.1.min.js"></script>
