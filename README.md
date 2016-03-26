@@ -1,1 +1,1 @@
-#weiconnect
+#Get weibo user emotion
