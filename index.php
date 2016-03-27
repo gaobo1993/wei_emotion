@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=1128990285" type="text/javascript" charset="utf-8"></script>
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=4067847149" type="text/javascript" charset="utf-8"></script>
 </head>
 <body style="background:url('img/index.jpg')">
 
