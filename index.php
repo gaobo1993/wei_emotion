@@ -21,12 +21,12 @@
         <wb:login-button type="3,2" onlogin="login">登录按钮</wb:login-button>
         </div>
     </div>
-    <div class="panel-footer">
+<!--     <div class="panel-footer">
         <div class="pull-right">
             Author: 石伟男
         </div>
         <div class="clearfix"></div>
-    </div>
+    </div> -->
 </div>
 
 <script>
