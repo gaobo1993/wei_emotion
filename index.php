@@ -11,7 +11,7 @@
 </head>
 <body style="background:url('img/index.jpg')">
 
-    <meta property="wb:webmaster" content="ff1f5631b53ae071" />
+    <!-- <meta property="wb:webmaster" content="ff1f5631b53ae071" /> -->
 
 <div class="panel panel-info" id="log-window">
     <div class="panel-heading">
@@ -33,8 +33,9 @@
 
 <script>
 function login(o) {
-    window.location.href = "https://api.weibo.com/oauth2/authorize?client_id=1128990285&response_type=code&redirect_uri=weiconnect.codingapp.com/home.php";
+    window.location.href = "https://api.weibo.com/oauth2/authorize?client_id=4067847149&response_type=code&redirect_uri=weiconnect.codingapp.com/home.php";
 }
+// 1128990285
 </script>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
