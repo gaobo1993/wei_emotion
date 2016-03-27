@@ -116,7 +116,8 @@ $process = preg_replace('|[a-zA-Z#-+=]+|', ' ', $process);
 $process = str_replace('@', '', $process);
 $process = substr($process, 0, 8000);
 
-$keywords = getkeywords($process);
+// $keywords = getkeywords($process);
+$keywords = "myKeywords"
 
 $query = "insert into users(uid, screen_name, keywords) values (?,?,?)";
 if ($stmt = $mysqli->prepare($query)) {
