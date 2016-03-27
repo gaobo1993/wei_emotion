@@ -3,7 +3,7 @@ require 'tool.php';
 @header("Content-Type:text/html;charset=utf-8");
 $uid = $_GET['uid'];
 $key = $_GET['keywords'];
-$mysqli = new mysqli("192.168.3.5", "bSjpPjgAFd4XHEhn", "KCuhIdJkhAqILkXS", "cf_2c9074ab_6d3e_4f67_93ef_fc0076f6c8b5");
+$mysqli mysqli("10.9.1.188", "qL8LQMhtBDyQgd0b", "JSfUTPlC0R3DthnG", "cf_afa98478_964a_43f8_a1c5_8193bff83c4e");
 if (mysqli_connect_error()) {
     die('Connect Error('.mysqli_connect_errno() .')'.mysqli_connect_error());
 }

@@ -7,21 +7,21 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=1128990285" type="text/javascript" charset="utf-8"></script>
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=4067847149" type="text/javascript" charset="utf-8"></script>
 </head>
 <body style="background-color:#ebf5fa">
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header"  id="nav-head">
-      <a class="navbar-brand" href="http://weiconnect.codingapp.com">WeiConnect</a>
+      <a class="navbar-brand" href="http://weiemotion-84dd1.coding.io">WeiConnect</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav"  id="navs">
-        <li class="active"><a href="http://weiconnect.codingapp.com">首页<span class="sr-only">(current)</span></a></li>
-        <li><a href="http://weiconnect.codingapp.com/apis.php">API</a></li>
+        <li class="active"><a href="http://weiemotion-84dd1.coding.io">首页<span class="sr-only">(current)</span></a></li>
+        <li><a href="http://weiemotion-84dd1.coding.io/apis.php">API</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right well-sm">
         <li><wb:login-button type="3,2" onlogout="logout">登录按钮</wb:login-button>            </li>
@@ -37,7 +37,7 @@ require 'tool.php';
 require 'emoji.php';
 //get token and uid
 $code = $_GET['code'];
-$url = "https://api.weibo.com/oauth2/access_token?client_id=1128990285&client_secret=776dd72ee4125d87ae62037592a8614a&grant_type=authorization_code&redirect_uri=weiconnect.codingapp.com/home.php&code=" . $code;
+$url = "https://api.weibo.com/oauth2/access_token?client_id=4067847149&client_secret=ec7904cf132615819aabfc764c5ad2e8&grant_type=authorization_code&redirect_uri=weiemotion-84dd1.coding.io/home.php&code=" . $code;
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_POST, 1);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -163,7 +163,7 @@ for ($i=0; $i<count($posts); $i++) {
 
 <script>
 function logout() {
-    window.location.href="http://weiconnect.codingapp.com";
+    window.location.href="http://weiemotion-84dd1.coding.io";
 }
 </script>
 <script src="js/jquery-1.11.1.min.js"></script>
