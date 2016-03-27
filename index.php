@@ -11,6 +11,8 @@
 </head>
 <body style="background:url('img/index.jpg')">
 
+    <meta property="wb:webmaster" content="ff1f5631b53ae071" />
+
 <div class="panel panel-info" id="log-window">
     <div class="panel-heading">
     <h2>欢迎！</h2>
