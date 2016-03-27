@@ -119,8 +119,6 @@ $process = substr($process, 0, 8000);
 // $keywords = getkeywords($process);
 $keywords = "myKeywords";
 
-echo $keywords;
-
 $query = "insert into users(uid, screen_name, keywords) values (?,?,?)";
 if ($stmt = $mysqli->prepare($query)) {
     $stmt->bind_param("iss", $id, $screen_name, $keywords);
