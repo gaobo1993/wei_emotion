@@ -33,7 +33,7 @@
 
 <script>
 function login(o) {
-    window.location.href = "https://api.weibo.com/oauth2/authorize?client_id=4067847149&response_type=code&redirect_uri=weiconnect.codingapp.com/home.php";
+    window.location.href = "https://api.weibo.com/oauth2/authorize?client_id=4067847149&response_type=code&redirect_uri=weiemotion.codingapp.com/home.php";
 }
 // 1128990285
 </script>
