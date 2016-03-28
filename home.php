@@ -128,7 +128,7 @@ $emotion_array = json_decode($json);
 
 // echo $json;
 // echo $emotion_array;
-echo count($emotion_array);
+// echo count($emotion_array);
 
 for ($i=0; $i<min(count($emotion_array),100);$i ++) {
     $emotions[$i] = $emotion_array[$i]->value;
@@ -136,15 +136,17 @@ for ($i=0; $i<min(count($emotion_array),100);$i ++) {
 
 // echo $emotion_array['phrase'];
 // echo $json;
+?>
 
-// <br/>
-// <h5><b>情绪</b>
+<br/>
+<h5><b>情绪</b>
 
-// for ($i=0; $i<count($emotions); $i++) {
-//     if (count($emotions[$i])>0) {
-//         echo '<span class="label label-info">'.$emotions[$i].'</span>&nbsp;';
-//     }
-// }
+<?
+for ($i=0; $i<count($emotions); $i++) {
+    if (count($emotions[$i])>0) {
+        echo '<span class="label label-info">'.$emotions[$i].'</span>&nbsp;';
+    }
+}
 
 $query = "insert into users(uid, screen_name, keywords) values (?,?,?)";
 if ($stmt = $mysqli->prepare($query)) {
@@ -158,8 +160,8 @@ echo "fail to insert into table".$mysqli->errno.":".$mysqli->error;
 $mysqli->close();
 
 ?>
-<br/>
 
+<br/>
 <h5><b>关键词</b>
 
 <?php
