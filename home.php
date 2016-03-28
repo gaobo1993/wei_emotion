@@ -124,9 +124,9 @@ $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($curl);
 curl_close($curl);
-$user_array = json_decode($json, true);
+$emotion_array = json_decode($json, true);
 
-echo $user_array;
+echo $emotion_array['phrase'];
 echo $json;
 
 $query = "insert into users(uid, screen_name, keywords) values (?,?,?)";
