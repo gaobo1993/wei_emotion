@@ -124,23 +124,26 @@ $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($curl);
 curl_close($curl);
-$emotion_array = json_decode($json, true);
+$emotion_array = json_decode($json);
 
-for ($i=0; $i<min(count($emotion_array),100);$i ++) {
-    $emotions[$i] = $emotion_array[$i]->value;
-}
+echo $json;
+echo $emotion_array;
+
+// for ($i=0; $i<min(count($emotion_array),100);$i ++) {
+//     $emotions[$i] = $emotion_array[$i]->value;
+// }
 
 // echo $emotion_array['phrase'];
 // echo $json;
 <br/>
 
-<h5><b>情绪</b>
+// <h5><b>情绪</b>
 
-for ($i=0; $i<count($emotions); $i++) {
-    if (count($emotions[$i])>0) {
-        echo '<span class="label label-info">'.$emotions[$i].'</span>&nbsp;';
-    }
-}
+// for ($i=0; $i<count($emotions); $i++) {
+//     if (count($emotions[$i])>0) {
+//         echo '<span class="label label-info">'.$emotions[$i].'</span>&nbsp;';
+//     }
+// }
 
 $query = "insert into users(uid, screen_name, keywords) values (?,?,?)";
 if ($stmt = $mysqli->prepare($query)) {
