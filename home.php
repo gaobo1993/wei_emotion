@@ -145,7 +145,7 @@ for ($i=0; $i<min(count($emotion_array),100);$i ++) {
 for ($i=0; $i<count($emotions); $i++) {
     if (count($emotions[$i])>0) {
         echo '<span class="label label-info">'.$emotions[$i].'</span>&nbsp;';
-        if ($i % 10 == 0) echo '\n';
+        if ($i % 10 == 0) echo "\r\n";
     }
 }
 
