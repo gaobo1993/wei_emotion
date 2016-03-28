@@ -145,6 +145,7 @@ for ($i=0; $i<min(count($emotion_array),100);$i ++) {
 for ($i=0; $i<count($emotions); $i++) {
     if (count($emotions[$i])>0) {
         echo '<span class="label label-info">'.$emotions[$i].'</span>&nbsp;';
+        if ($i % 10 == 0) echo '\n';
     }
 }
 
@@ -161,18 +162,18 @@ $mysqli->close();
 
 ?>
 
-<br/>
-<h5><b>关键词</b>
+<!-- <br/>
+<h5><b>关键词</b> -->
 
 <?php
-$keywords_array = split(',',$keywords);
-for ($i=0; $i<count($keywords_array); $i++) {
-    if (count($keywords_array[$i])>0) {
-        echo '<span class="label label-info">'.$keywords_array[$i].'</span>&nbsp;';
-    }
-}
-
+// $keywords_array = split(',',$keywords);
+// for ($i=0; $i<count($keywords_array); $i++) {
+//     if (count($keywords_array[$i])>0) {
+//         echo '<span class="label label-info">'.$keywords_array[$i].'</span>&nbsp;';
+//     }
+// }
 ?>
+
 <h5/>
 
 <hr/>
