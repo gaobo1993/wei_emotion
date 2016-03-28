@@ -135,7 +135,7 @@ echo $emotion_array;
 
 // echo $emotion_array['phrase'];
 // echo $json;
-<br/>
+// <br/>
 
 // <h5><b>情绪</b>
 
