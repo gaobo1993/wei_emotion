@@ -119,6 +119,15 @@ $process = substr($process, 0, 8000);
 // $keywords = getkeywords($process);
 $keywords = "myKeywords";
 
+$url = "https://api.weibo.com/2/emotions.json?access_token=" . $token."&uid=" . $uid;
+$curl = curl_init($url);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+$json = curl_exec($curl);
+curl_close($curl);
+$user_array = json_decode($json, true);
+
+echo $user_array
+
 $query = "insert into users(uid, screen_name, keywords) values (?,?,?)";
 if ($stmt = $mysqli->prepare($query)) {
     $stmt->bind_param("iss", $id, $screen_name, $keywords);

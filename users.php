@@ -7,7 +7,6 @@ if (mysqli_connect_error()) {
 }
 //show all users
 $query = "select uid, screen_name from users";
-echo "Show users";
 $return = array();
 if ($stmt = $mysqli->prepare($query)) {
     $stmt->execute();
