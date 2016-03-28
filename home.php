@@ -126,17 +126,18 @@ $json = curl_exec($curl);
 curl_close($curl);
 $emotion_array = json_decode($json);
 
-echo $json;
-echo $emotion_array;
+// echo $json;
+// echo $emotion_array;
+echo count($emotion_array);
 
-// for ($i=0; $i<min(count($emotion_array),100);$i ++) {
-//     $emotions[$i] = $emotion_array[$i]->value;
-// }
+for ($i=0; $i<min(count($emotion_array),100);$i ++) {
+    $emotions[$i] = $emotion_array[$i]->value;
+}
 
 // echo $emotion_array['phrase'];
 // echo $json;
-// <br/>
 
+// <br/>
 // <h5><b>情绪</b>
 
 // for ($i=0; $i<count($emotions); $i++) {
