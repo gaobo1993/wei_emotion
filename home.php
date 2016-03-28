@@ -92,9 +92,11 @@ $url = "https://api.weibo.com/2/statuses/user_timeline.json?access_token=".$toke
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($curl);
-echo $json;
 curl_close($curl);
 $obj = json_decode($json);
+echo $json;
+echo $obj;
+echo "123";
 for ($i=0; $i<count($obj->statuses);$i ++) {
     $p = $obj->statuses[$i];
     $content = $p->text;
