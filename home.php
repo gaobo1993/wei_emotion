@@ -174,6 +174,7 @@ $strUserEmotions = "";
 foreach ($userEmotions as $varEmotion) {
     $strUserEmotions .= $varEmotion;
 }
+echo $strUserEmotions;
 ?>
 
 <br/>
