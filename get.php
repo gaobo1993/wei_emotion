@@ -17,6 +17,8 @@ if ($result->num_rows>0) {
         array_push($post_row, $row[0]);
     }
 }
+
+
 if ($key == '1') {
     $query = "select keywords from users where uid=".$uid;
     $result = $mysqli->query($query);
