@@ -174,7 +174,7 @@ for ($i=0; $i<min(count($emotion_array),100);$i ++) {
 // foreach ($userEmotions as $varEmotion) {
 //     $strUserEmotions .= $varEmotion;
 // }
-echo $strUserEmotions;
+// echo $strUserEmotions;
 ?>
 
 <br/>
