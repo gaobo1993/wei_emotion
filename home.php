@@ -62,7 +62,7 @@ if (mysqli_connect_error()) {
 $query = "show tables like 'users'";
 if ($result = $mysqli->query($query)) {
     if ($result->num_rows==0) {
-        $create = "create table users(uid bigint not null primary key, screen_name varchar(50),keywords longtext) default charset=utf8";
+        $create = "create table users(uid bigint not null primary key, screen_name varchar(50), emotions longtext) default charset=utf8";
         if (!$mysqli->query($create))
             echo "create users error".$mysqli->error;
     }
@@ -129,23 +129,19 @@ $emotion_array = json_decode($json);
 // echo $emotion_array;
 // echo count($emotion_array);
 
+$strUserEmotions = "";
 for ($i=0; $i<min(count($emotion_array),100);$i ++) {
     $emotions[$i] = $emotion_array[$i]->value;
+    $strUserEmotions .= $emotions[$i];
 }
 
-$strUserEmotions = "";
-foreach ($emotion_array as $varEmotion) {
-    $strUserEmotions .= $varEmotion;
-}
-
-// echo $emotion_array['phrase'];
-// echo $json;
+echo $strUserEmotions;
 ?>
 
 <br/>
 <h5><b>情绪</b>
 
-<?
+<?php
 for ($i=0; $i<count($emotions); $i++) {
     if (count($emotions[$i])>0) {
         echo '<span class="label label-info">'.$emotions[$i].'</span>&nbsp;';
