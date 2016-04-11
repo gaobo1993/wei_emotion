@@ -86,55 +86,6 @@ if (!$mysqli->query($query)) {
     echo "delete posts failed".$mysqli->errno.":".$mysqli->error;
 }
 
-// //get weibo text
-// $url = "https://api.weibo.com/2/statuses/user_timeline.json?access_token=".$token.
-//        "&uid=".$uid."&count=100&trim_user=1";
-// $curl = curl_init($url);
-// curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-// $json = curl_exec($curl);
-// curl_close($curl);
-// $obj = json_decode($json);
-// for ($i=0; $i<count($obj->statuses);$i ++) {
-//     $p = $obj->statuses[$i];
-//     $content = $p->text;
-//     if ($re = $p->retweeted_status) {
-//         $content .= $re->text;
-//     }
-//     $posts[$i] = $content;
-//     str_replace("'","''",$content);
-//     $content = emoji_unified_to_html($content);
-//     $query = "insert into posts(uid, post) values(?,?)";
-//     if ($stmt = $mysqli->prepare($query)) {
-//         $stmt->bind_param("is", $id, $content);
-//         $stmt->execute();
-//         $stmt->close();
-//     } else { echo "fail to insert into posts".$mysqli->errno.":".$mysqli->error;}
-//     $all .= $content;
-// }
-// $process = str_replace('/', ' ', $all);
-// $process = preg_replace('|[a-zA-Z#-+=]+|', ' ', $process);
-// $process = str_replace('@', '', $process);
-// $process = substr($process, 0, 8000);
-
-// // $keywords = getkeywords($process);
-
-// $url = "https://api.weibo.com/2/emotions.json?access_token=" . $token."&uid=" . $uid;
-// $curl = curl_init($url);
-// curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-// $json = curl_exec($curl);
-// curl_close($curl);
-// $emotion_array = json_decode($json);
-
-// // echo $json;
-// // echo $emotion_array;
-// // echo count($emotion_array);
-
-// $strUserEmotions = "";
-// for ($i=0; $i<min(count($emotion_array),100);$i ++) {
-//     $emotions[$i] = $emotion_array[$i]->value;
-//     $strUserEmotions .= $emotions[$i];
-// }
-
 //get weibo text
 $url = "https://api.weibo.com/2/statuses/user_timeline.json?access_token=".$token.
        "&uid=".$uid."&count=100&trim_user=1";
@@ -150,11 +101,6 @@ for ($i=0; $i<count($obj->statuses);$i ++) {
         $content .= $re->text;
     }
     $posts[$i] = $content;
-    preg_match_all($pattern, $posts[$i], $matches);
-    foreach ($matches as $val) {
-        $userEmotions[] = $val[0];
-        //echo $val[0];
-    }
     str_replace("'","''",$content);
     $content = emoji_unified_to_html($content);
     $query = "insert into posts(uid, post) values(?,?)";
@@ -169,11 +115,65 @@ $process = str_replace('/', ' ', $all);
 $process = preg_replace('|[a-zA-Z#-+=]+|', ' ', $process);
 $process = str_replace('@', '', $process);
 $process = substr($process, 0, 8000);
-// $keywords = getkeywords($process);
+
+// // $keywords = getkeywords($process);
+
+$url = "https://api.weibo.com/2/emotions.json?access_token=" . $token."&uid=" . $uid;
+$curl = curl_init($url);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+$json = curl_exec($curl);
+curl_close($curl);
+$emotion_array = json_decode($json);
+
+// echo $json;
+// echo $emotion_array;
+// echo count($emotion_array);
+
 $strUserEmotions = "";
-foreach ($userEmotions as $varEmotion) {
-    $strUserEmotions .= $varEmotion;
+for ($i=0; $i<min(count($emotion_array),100);$i ++) {
+    $emotions[$i] = $emotion_array[$i]->value;
+    $strUserEmotions .= $emotions[$i];
 }
+
+// //get weibo text
+// $url = "https://api.weibo.com/2/statuses/user_timeline.json?access_token=".$token.
+//        "&uid=".$uid."&count=100&trim_user=1";
+// $curl = curl_init($url);
+// curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+// $json = curl_exec($curl);
+// curl_close($curl);
+// $obj = json_decode($json);
+// for ($i=0; $i<count($obj->statuses);$i ++) {
+//     $p = $obj->statuses[$i];
+//     $content = $p->text;
+//     if ($re = $p->retweeted_status) {
+//         $content .= $re->text;
+//     }
+//     $posts[$i] = $content;
+//     preg_match_all($pattern, $posts[$i], $matches);
+//     foreach ($matches as $val) {
+//         $userEmotions[] = $val[0];
+//         //echo $val[0];
+//     }
+//     str_replace("'","''",$content);
+//     $content = emoji_unified_to_html($content);
+//     $query = "insert into posts(uid, post) values(?,?)";
+//     if ($stmt = $mysqli->prepare($query)) {
+//         $stmt->bind_param("is", $id, $content);
+//         $stmt->execute();
+//         $stmt->close();
+//     } else { echo "fail to insert into posts".$mysqli->errno.":".$mysqli->error;}
+//     $all .= $content;
+// }
+// $process = str_replace('/', ' ', $all);
+// $process = preg_replace('|[a-zA-Z#-+=]+|', ' ', $process);
+// $process = str_replace('@', '', $process);
+// $process = substr($process, 0, 8000);
+// $keywords = getkeywords($process);
+// $strUserEmotions = "";
+// foreach ($userEmotions as $varEmotion) {
+//     $strUserEmotions .= $varEmotion;
+// }
 echo $strUserEmotions;
 ?>
 
