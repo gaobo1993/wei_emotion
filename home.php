@@ -62,7 +62,7 @@ if (mysqli_connect_error()) {
 $query = "show tables like 'users'";
 if ($result = $mysqli->query($query)) {
     if ($result->num_rows==0) {
-        $create = "create table users(uid bigint not null primary key, screen_name varchar(50), emotions longtext) default charset=utf8";
+        $create = "create table users(uid bigint not null primary key, screen_name varchar(50), emotions varchar(100)) default charset=utf8";
         if (!$mysqli->query($create))
             echo "create users error".$mysqli->error;
     }
@@ -134,8 +134,6 @@ for ($i=0; $i<min(count($emotion_array),100);$i ++) {
     $emotions[$i] = $emotion_array[$i]->value;
     $strUserEmotions .= $emotions[$i];
 }
-
-echo $strUserEmotions;
 ?>
 
 <br/>
