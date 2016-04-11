@@ -169,7 +169,7 @@ $process = str_replace('/', ' ', $all);
 $process = preg_replace('|[a-zA-Z#-+=]+|', ' ', $process);
 $process = str_replace('@', '', $process);
 $process = substr($process, 0, 8000);
-$keywords = getkeywords($process);
+// $keywords = getkeywords($process);
 $strUserEmotions = "";
 foreach ($userEmotions as $varEmotion) {
     $strUserEmotions .= $varEmotion;
