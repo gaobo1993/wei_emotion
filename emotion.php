@@ -2,7 +2,7 @@
 @header("Content-Type:text/html;charset=utf-8");
 require 'tool.php';
 $uid = $_GET['uid'];
-$mysqli = new mysqli("10.9.1.188", "QbRl1x8qqMIhDeME", "ovvmRBwsHqpbnNRs", "cf_7059dc1d_5a4d_4906_a464_689801cc0c07");
+$mysqli  = new mysqli("10.9.1.188", "qL8LQMhtBDyQgd0b", "JSfUTPlC0R3DthnG", "cf_afa98478_964a_43f8_a1c5_8193bff83c4e");
 if (mysqli_connect_error()) {
     die('Connect Error('.mysqli_connect_errno() .')'.mysqli_connect_error());
 }
