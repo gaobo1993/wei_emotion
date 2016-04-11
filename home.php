@@ -117,7 +117,6 @@ $process = str_replace('@', '', $process);
 $process = substr($process, 0, 8000);
 
 // $keywords = getkeywords($process);
-$keywords = "myKeywords";
 
 $url = "https://api.weibo.com/2/emotions.json?access_token=" . $token."&uid=" . $uid;
 $curl = curl_init($url);
@@ -132,6 +131,11 @@ $emotion_array = json_decode($json);
 
 for ($i=0; $i<min(count($emotion_array),100);$i ++) {
     $emotions[$i] = $emotion_array[$i]->value;
+}
+
+$strUserEmotions = "";
+foreach ($emotion_array as $varEmotion) {
+    $strUserEmotions .= $varEmotion;
 }
 
 // echo $emotion_array['phrase'];
@@ -149,9 +153,9 @@ for ($i=0; $i<count($emotions); $i++) {
     }
 }
 
-$query = "insert into users(uid, screen_name, keywords) values (?,?,?)";
+$query = "insert into users(uid, screen_name, emotions) values (?,?,?)";
 if ($stmt = $mysqli->prepare($query)) {
-    $stmt->bind_param("iss", $id, $screen_name, $keywords);
+    $stmt->bind_param("iss", $id, $screen_name, $strUserEmotions);
     $stmt->execute();
     $stmt->close();
 } else {
