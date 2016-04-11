@@ -50,8 +50,8 @@
             <td>返回uid为&lt;uid&gt;的用户的最近微博（不超过100条）</td>
         </tr>
         <tr>
-            <td><a href="http://weiemotion-84dd1.coding.io/posts/<uid>?keywords=1">weiemotion-84dd1.coding.io/posts/&lt;uid&gt;?keywords=1</a></td>
-            <td>返回uid为&lt;uid&gt;的用户的最近微博（不超过100条）及对应的关键词信息</td>
+            <td><a href="http://weiemotion-84dd1.coding.io/emotions/<uid>">weiemotion-84dd1.coding.io/posts/&lt;uid&gt;?keywords=1</a></td>
+            <td>返回uid为&lt;uid&gt;的用户的最近表情信息信息</td>
         </tr>
     </table>
 </div>
